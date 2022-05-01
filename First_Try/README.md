@@ -2,7 +2,7 @@
 ![First screeen](/First_Try/Nextion/Image/FirstTry.png)  
 
 First try is all about getting data all the way from Home Assistant via ESPHome to NSPanel, and button to send signal all the way back from NSPanel via ESPHome to Home Assistant.
-In my Home Assistant I have created timer to used when I am cooking and baking, I want to bee able to select the rigth timer and start it from my NSPanel
+In my Home Assistant I have created timer to used when I am cooking and baking, I want to bee able to select the rigth timer and start it from my NSPanel, when timer is finish an automation will bee sewnd with Telegram, and that is werry nice I cn bee in garden and still a notification on my phone.
 
 When writing this the I am using this product:
   * Nextion Editor version is: V1.63.3.
