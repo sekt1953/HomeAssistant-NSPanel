@@ -44,7 +44,7 @@ First try is all about getting data all the way from Home Assistant via ESPHome 
 In my Home Assistant I have created timer to used when I am cooking and baking, I want to bee able to select the rigth timer and start it from my NSPanel, when timer is finish an automation will bee sewnd with Telegram, and that is werry nice I cn bee in garden and still a notification on my phone.
 
 
-###  [**Click Here!** for **Explanation** and the **Files** from **First try!**](./First_Try/README.md)
+###  [*Click Here!* for *Explanation* and the *Files* from *First try!*](./First_Try/README.md)
  
 
 ## Navigation from page to page:
