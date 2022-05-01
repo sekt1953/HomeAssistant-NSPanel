@@ -37,9 +37,17 @@ My work with Nextion Display,  ESPHome and Home Assistant, for this i use Sonoff
     * [Display Component](https://esphome.io/components/display/index.html)
     * [Nextion TFT LCD Display](https://esphome.io/components/display/nextion.html)
 
-## First Try
-First try is all about getting data all the way from Home Assistant via ESPHome to NSPanel, and button to send signal all the way back from NSPanel via ESPHome to Home Assistant.
+## First Try:
+![First screeen](/First_Try/Nextion/Image/FirstTry.png)  
 
-* [See more here](./First_Try/README.md)
+First try is all about getting data all the way from Home Assistant via ESPHome to NSPanel, and button to send signal all the way back from NSPanel via ESPHome to Home Assistant.
+In my Home Assistant I have created timer to used when I am cooking and baking, I want to bee able to select the rigth timer and start it from my NSPanel
+
+
+
+###  [Here is the explanation and the files about my work with this part](./First_Try/README.md)
  
+
+## Navigation from page to page:
+
 
