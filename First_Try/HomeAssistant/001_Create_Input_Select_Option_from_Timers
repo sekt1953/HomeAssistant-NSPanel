@@ -1,0 +1,22 @@
+alias: 001 Create Input Select Option from Timers
+description: ''
+trigger:
+  - platform: event
+    event_type: call_service
+    event_data:
+      domain: timer
+      service: reload
+      service_data: {}
+  - platform: homeassistant
+    event: start
+condition: []
+action:
+  - service: input_select.set_options
+    data:
+      options: >
+        {{ '[ "' + states | selectattr('entity_id', 'match', 'timer.kitchen_') |
+        map(attribute='entity_id') | join('", "') + '" ]' }}  
+    target:
+      entity_id:
+        - input_select.select_cooking_timer
+mode: single

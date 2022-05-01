@@ -1,0 +1,59 @@
+alias: 000_nspanel
+description: ''
+trigger:
+  - type: turned_off
+    platform: device
+    device_id: 6662312d0ff5820b133f24924f827ddb
+    entity_id: binary_sensor.demo_nspanel_prev
+    domain: binary_sensor
+    id: prev
+  - type: turned_off
+    platform: device
+    device_id: 6662312d0ff5820b133f24924f827ddb
+    entity_id: binary_sensor.demo_nspanel_play
+    domain: binary_sensor
+    id: play
+  - type: turned_off
+    platform: device
+    device_id: 6662312d0ff5820b133f24924f827ddb
+    entity_id: binary_sensor.demo_nspanel_next
+    domain: binary_sensor
+    id: next
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: prev
+        sequence:
+          - service: input_select.select_previous
+            data: {}
+            target:
+              entity_id: input_select.select_cooking_timer
+      - conditions:
+          - condition: trigger
+            id: play
+        sequence:
+          - service: timer.start
+            data: {}
+            target:
+              entity_id: '{{ states(''input_select.select_cooking_timer'') }}'
+      - conditions:
+          - condition: trigger
+            id: next
+        sequence:
+          - service: input_select.select_next
+            data: {}
+            target:
+              entity_id: input_select.select_cooking_timer
+    default: []
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 15
+      milliseconds: 0
+  - service: input_select.select_first
+    data: {}
+    target:
+      entity_id: input_select.select_cooking_timer
+mode: restart

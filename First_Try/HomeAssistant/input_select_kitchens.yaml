@@ -1,0 +1,3 @@
+select_cooking_timer:
+  name: Cooking Timer
+  options: ['vælg en timer']
