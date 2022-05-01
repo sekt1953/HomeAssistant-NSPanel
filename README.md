@@ -27,6 +27,7 @@ My work with Nextion Display,  ESPHome and Home Assistant, for this i use Sonoff
 
 * Dokumentation:
   * Nextion:
+    * [Nextion Editor](https://nextion.tech/nextion-editor/)
     * [Nextion Editor Guide](https://nextion.tech/editor_guide/)
     * [The Nextion Instruction Set](https://nextion.tech/instruction-set/)
   * Other:
