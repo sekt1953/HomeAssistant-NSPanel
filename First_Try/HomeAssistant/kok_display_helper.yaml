@@ -1,0 +1,11 @@
+kitchen_display_entity_id:
+  name: kitchen_display_entity_id
+
+kitchen_display_friendly_name:
+  name: kitchen_display_friendly_name
+
+kitchen_display_duration:
+  name: kitchen_display_duration
+
+kitchen_display_icon:
+  name: kitchen_display_icon
