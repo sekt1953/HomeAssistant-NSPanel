@@ -38,11 +38,15 @@ Herunder prøver jeg at beskrive hvad filen "[nspanel-demo.HMI](./Nextion/nspane
 * [/config/configuration.yaml](./HomeAssistant/configuration.yaml)
 * [/config/secrets.yaml](./HomeAssistant/secrets.yaml)
 
+#### Helper
 Timer:
 * [/config/timer_merge_named/kitchens.yaml](./HomeAssistant/timer_kitchens.yaml)
 
 Input Select:
 * [/config/input_select_merge_named/kitchens.yaml](./HomeAssistant/input_select_kitchens.yaml)
+
+Text:
+* [/config/input_text_merge_named/kok_display_helper.yaml](./HomeAssistant/kok_display_helper.yaml)
 
 ### Automation:
 
@@ -51,3 +55,128 @@ Input Select:
   
 ### lovelace:
 ![My test page layout in Lovelace](./HomeAssistant/Lovelace/LovelaceKitchenTestPage.png)
+
+
+#### Clock & Timer view:
+```
+type: grid
+cards:
+  - type: custom:simple-clock-card
+    use_military: true
+    hide_seconds: true
+  - type: entities
+    entities:
+      - entity: timer.kitchen_001_aeg_blodkogte
+      - entity: timer.kitchen_002_aeg_hardkogte
+      - entity: timer.kitchen_003_rugbrod_haevetid
+      - entity: timer.kitchen_004_rugbrod_bagetid
+      - entity: timer.kitchen_005_fodselsdagsboller_haevetid_1
+      - entity: timer.kitchen_006_fodselsdagsboller_haevetid_2
+      - entity: timer.kitchen_007_fodselsdagsboller_bagetid
+      - entity: timer.kitchen_008_grahamsbrod_haevetid
+      - entity: timer.kitchen_009_grahamsbrod_bagetid
+      - entity: timer.kitchen_010_morgen_boller_bagetid
+    state_color: true
+    show_header_toggle: false
+columns: 1
+square: false
+```
+#### Text Helper veiw:
+```
+type: grid
+cards:
+  - type: markdown
+    content: >
+      ## Data :  
+
+      Entity_ID : {{ states('input_select.select_cooking_timer') }}
+
+      Friendly Name  : {{ state_attr(
+      states('input_select.select_cooking_timer') ,'friendly_name') }}
+
+      Duration : {{ state_attr( states('input_select.select_cooking_timer')
+      ,'duration') }}
+
+      Icon:  {{ state_attr(states('input_select.select_cooking_timer') ,'icon')
+      }} 
+    title: Køkken Timer
+columns: 1
+square: false
+```
+#### NSPanel-Diagnostic:
+```
+square: false
+columns: 1
+type: grid
+cards:
+  - type: entities
+    entities:
+      - switch.demo_nspanel_relay_1
+      - switch.demo_nspanel_relay_2
+    title: NSPanel-Controls
+    show_header_toggle: true
+    state_color: true
+  - type: entities
+    entities:
+      - entity: number.demo_nspanel_brightness
+      - entity: button.restart_demo_nspanel
+      - entity: button.demo_nspanel_tft_upload
+    title: NSPanel-Configuration
+    state_color: true
+  - type: entities
+    entities:
+      - sensor.demo_nspanel_wifi_signal
+    title: NSPanel-Diagnostic
+    state_color: true
+```
+
+#### NSPanel-Sensors
+```
+square: false
+columns: 1
+type: grid
+cards:
+  - type: entities
+    entities:
+      - entity: binary_sensor.demo_nspanel_left_button
+      - entity: binary_sensor.demo_nspanel_right_button
+      - entity: binary_sensor.demo_nspanel_prev
+      - entity: binary_sensor.demo_nspanel_play
+      - entity: binary_sensor.demo_nspanel_next
+      - entity: sensor.demo_nspanel_temperature
+      - entity: sensor.pwm_kokken_new_temp
+      - entity: weather.home
+        secondary_info: none
+    title: NSPanel-Sensors
+    state_color: true
+```
+
+#### NSPanel-Sensors:
+```
+square: false
+columns: 1
+type: grid
+cards:
+  - type: entities
+    entities:
+      - entity: binary_sensor.demo_nspanel_left_button
+      - entity: binary_sensor.demo_nspanel_right_button
+      - entity: binary_sensor.demo_nspanel_prev
+      - entity: binary_sensor.demo_nspanel_play
+      - entity: binary_sensor.demo_nspanel_next
+      - entity: sensor.demo_nspanel_temperature
+      - entity: sensor.pwm_kokken_new_temp
+      - entity: weather.home
+        secondary_info: none
+    title: NSPanel-Sensors
+    state_color: true
+```
+
+#### Input_select Helper veiw:
+```
+type: entities
+entities:
+  - entity: input_select.select_cooking_timer
+title: Choose Cooking Timer
+state_color: true
+```

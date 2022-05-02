@@ -51,3 +51,5 @@ In my Home Assistant I have created timer to used when I am cooking and baking, 
 ### Page layout guide:
 ![First screeen](./Navigation/image/Layout_000.png)  
 
+### Icons:
+
