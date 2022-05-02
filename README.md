@@ -47,9 +47,9 @@ In my Home Assistant I have created timer to used when I am cooking and baking, 
 ###  [*Click Here!* for *Explanation* and the *Files* from *First try!*](./First_Try/README.md)
  
 
-## Navigation from page to page:
-### Page layout guide:
-![First screeen](./Navigation/image/Layout_000.png)  
+## New Page Layout
+### New Page Template:
+![First screeen](./NewPageLayout/png/NewTemplate.png)  
 
 ### Icons:
 
