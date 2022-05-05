@@ -4,6 +4,8 @@
 ![New template](./png/NewTemplate.png)
 
 ## Page Navigation
+Faveskala:
+![New template](./png/Faver.png)
 | | |
 |:---|:---|
 |![New template](./png/NaviOFF.png)|![New template](./png/NaviON.png)|
