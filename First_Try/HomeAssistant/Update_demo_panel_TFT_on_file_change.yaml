@@ -1,0 +1,14 @@
+alias: Update demo panel TFT on file change
+description: ''
+trigger:
+  - platform: event
+    event_type: folder_watcher
+    event_data:
+      event_type: modified
+      path: /config/www/tft/
+condition: []
+action:
+  - service: esphome.nspanel_demo_upload_tft
+    data: {}
+mode: queued
+max: 2

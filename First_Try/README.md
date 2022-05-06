@@ -51,7 +51,8 @@ Text:
 ### Automation:
 
   * [/config//000_nspanel.yaml](./HomeAssistant/000_nspanel.yaml)
-  * [/config//001_Create_Input_Select_Option_from_Timers](./HomeAssistant/001_Create_Input_Select_Option_from_Timers)
+  * [/config//001_Create_Input_Select_Option_from_Timers](./HomeAssistant/001_Create_Input_Select_Option_from_Timers.yaml)
+  * [/config//Update_demo_panel_TFT_on_file_change.yaml](./HomeAssistant/Update_demo_panel_TFT_on_file_change.yaml)
   
 ### lovelace:
 ![My test page layout in Lovelace](./HomeAssistant/Lovelace/LovelaceKitchenTestPage.png)
