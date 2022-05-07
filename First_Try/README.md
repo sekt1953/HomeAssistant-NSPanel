@@ -23,8 +23,71 @@ Herunder prøver jeg at beskrive hvad filen "[nspanel-demo.HMI](./Nextion/nspane
 ### Configuration:
 
 * [/config/configuration.yaml](./HomeAssistant/configuration.yaml)
-* [/config/secrets.yaml](./HomeAssistant/secrets.yaml)
+```
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
 
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+# See this video about splitting:
+#  Understanding YAML as it's used in Home Assistant Config files
+#  https://www.youtube.com/watch?v=FfjSA2o_0KA
+
+# Result is a LIST!
+# Each file is an item in the list.
+automation split: !include_dir_list ./automations_dir_list
+script split: !include_dir_list ./scripts_dir_list
+scene split: !include_dir_list ./scenes_dir_list
+
+# All files merged into one big list (files MUST contain a list).
+sensor: !include_dir_merge_list ./sensor_merge_list
+binary_sensor: !include_dir_merge_list ./binary_sensor_merge_list
+
+# Result is a DICTIONARY!
+# Merge all files into a directory using the filename as the key. 
+
+# Merge contents of all files.
+timer: !include_dir_merge_named ./timer_merge_named
+input_select: !include_dir_merge_named ./input_select_merge_named
+input_text: !include_dir_merge_named ./input_text_merge_named
+
+recorder: 
+  db_url: !secret maria_db
+
+homeassistant:
+  allowlist_external_dirs:
+    - /config/www/tft
+
+folder_watcher:
+  - folder: /config/www/tft
+
+# Telegram
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_api_token
+    allowed_chat_ids:
+      - !secret telegram_chat_id_user1
+      - !secret telegram_chat_id_group1
+
+notify:
+  - platform: telegram
+    name: !secret telegram_NOTIFIER_User1
+    chat_id: !secret telegram_chat_id_user1
+
+  - platform: telegram
+    name: !secret telegram_NOTIFIER_group1
+    chat_id: !secret telegram_chat_id_group1
+```
+* [/config/secrets.yaml](./HomeAssistant/secrets.yaml)
+```
+```
 #### Helper
 * Timer:  [/config/timer_merge_named/kitchens.yaml](./HomeAssistant/timer_kitchens.yaml)
 ```
