@@ -22,7 +22,7 @@
 
 
 #### Cooking Timer:
-|     |           Prev Cooking Timer        | Start Cooking Timer   | Next Cooking Timer | Button Size |
-|:--- |:---:                                |:---:      |:---:      |:---:  |
-| Off |![Off](./ColorSample/ButtonPrevOff.png) |![PlayOff](./ColorSample/ButtonPlayOff.png) |![NextOff](./ColorSample/ButtonNextOff.png)| 112x50 px|
-| On  |![PrevOn](./ColorSample/ButtonPrevOn.png)|![PlayOn](./ColorSample/ButtonPlayOn.png) | ![ON](./ColorSample/ButtonNextOn.png)  | 112x50 px |
+| Cooking button Prev-Play-Next  | Size |
+|:---: |:---: |
+|![Off](./ColorSample/ButtonOff.png)| 112x50 px |
+|![ON](./ColorSample/ButtonOn.png)| 112x50 px |
