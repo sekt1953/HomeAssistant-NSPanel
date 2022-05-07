@@ -1,4 +1,4 @@
-alias: 000_nspanel
+alias: 000_nspanel_timer_navigate
 description: ''
 trigger:
   - type: turned_off

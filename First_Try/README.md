@@ -18,6 +18,245 @@ When writing this the I am using this product:
 
 Herunder prøver jeg at beskrive hvad filen "[nspanel-demo.HMI](./Nextion/nspanel_demo.HMI)" to edit .HMI file you have to have this Editor [Nextion Editor](https://nextion.tech/nextion-editor/) it is for now free and it have to run on windows, I run it on win7 in a virtualBox from Oracle so I can have it running an my linix platform. 
 
+## Home Assistant
+
+### Configuration:
+
+* [/config/configuration.yaml](./HomeAssistant/configuration.yaml)
+* [/config/secrets.yaml](./HomeAssistant/secrets.yaml)
+
+#### Helper
+* Timer:  
+  * [/config/timer_merge_named/kitchens.yaml](./HomeAssistant/timer_kitchens.yaml)
+
+```
+# Køkken timer
+kitchen_001_aeg_blodkogte:
+  name: "Æg Blødkogte"
+  duration: 600
+  icon: mdi:egg-easter
+
+kitchen_002_aeg_hardkogte:
+  name: "Æg Hårdkogte"
+  duration: 900
+  icon: mdi:egg-easter
+
+kitchen_003_rugbrod_haevetid:
+  name: "Rugbrød hævetid"
+  duration: 5400
+  icon: mdi:bread-slice
+
+kitchen_004_rugbrod_bagetid:
+  name: "Rugbrød bagetid ved 170°C"
+  duration: 5400
+  icon: mdi:bread-slice
+
+kitchen_005_fodselsdagsboller_haevetid_1:
+  name: "Fødselsdagsboller hævetid 1"
+  duration: 1200
+  icon: mdi:muffin
+
+kitchen_006_fodselsdagsboller_haevetid_2:
+  name: "Fødselsdagsboller hævetid 2"
+  duration: 3600
+  icon: mdi:muffin
+  
+kitchen_007_fodselsdagsboller_bagetid:
+  name: "Fødselsdagsboller bagetid ved 200°C"
+  duration: 720
+  icon: mdi:muffin
+
+kitchen_008_grahamsbrod_haevetid:
+  name: "Grahamsbrød Hævetid"
+  duration: 5400
+  icon: mdi:baguette
+
+kitchen_009_grahamsbrod_bagetid:
+  name: "Grahamsbrød Bagetid ved 200°C"
+  duration: 1500
+  icon: mdi:baguette
+
+kitchen_010_morgen_boller_bagetid:
+  name: "Morgen Boller Bagetid ved 220°C"
+  duration: 1020
+  icon: mdi:coffee-outline
+```
+
+* Input Select:
+  * [/config/input_select_merge_named/kitchens.yaml](./HomeAssistant/input_select_kitchens.yaml)
+
+```
+select_cooking_timer:
+  name: Cooking Timer
+  options: ['vælg en timer']
+```
+* Text:
+  * [/config/input_text_merge_named/nspanel_helper.yaml](./HomeAssistant/kok_display_helper.yaml)
+
+### Automation:
+
+* [/config//001_Create_Input_Select_Option_from_Timers](./HomeAssistant/001_Create_Input_Select_Option_from_Timers.yaml)
+
+```
+alias: 001 Create Input Select Option from Timers
+description: ''
+trigger:
+  - platform: event
+    event_type: call_service
+    event_data:
+      domain: timer
+      service: reload
+      service_data: {}
+  - platform: homeassistant
+    event: start
+condition: []
+action:
+  - service: input_select.set_options
+    data:
+      options: >
+        {{ '[ "' + states | selectattr('entity_id', 'match', 'timer.kitchen_') |
+        map(attribute='entity_id') | join('", "') + '" ]' }}  
+    target:
+      entity_id:
+        - input_select.select_cooking_timer
+mode: single
+```
+This piece of code, will create an input_select helper, contains a list of timer entity_id's when either a timer_reload service call is made or Home Assistant is restarted.
+
+* [/config//000_nspanel_timer_navigate.yaml](./HomeAssistant/000_nspanel_timer_navigate.yaml)  
+
+```
+alias: 000_nspanel_timer_navigate
+description: ''
+trigger:
+  - type: turned_off
+    platform: device
+    device_id: 6662312d0ff5820b133f24924f827ddb
+    entity_id: binary_sensor.demo_nspanel_prev
+    domain: binary_sensor
+    id: prev
+  - type: turned_off
+    platform: device
+    device_id: 6662312d0ff5820b133f24924f827ddb
+    entity_id: binary_sensor.demo_nspanel_play
+    domain: binary_sensor
+    id: play
+  - type: turned_off
+    platform: device
+    device_id: 6662312d0ff5820b133f24924f827ddb
+    entity_id: binary_sensor.demo_nspanel_next
+    domain: binary_sensor
+    id: next
+condition: []
+action:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: prev
+        sequence:
+          - service: input_select.select_previous
+            data: {}
+            target:
+              entity_id: input_select.select_cooking_timer
+      - conditions:
+          - condition: trigger
+            id: play
+        sequence:
+          - service: timer.start
+            data: {}
+            target:
+              entity_id: '{{ states(''input_select.select_cooking_timer'') }}'
+      - conditions:
+          - condition: trigger
+            id: next
+        sequence:
+          - service: input_select.select_next
+            data: {}
+            target:
+              entity_id: input_select.select_cooking_timer
+    default: []
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 15
+      milliseconds: 0
+  - service: input_select.select_first
+    data: {}
+    target:
+      entity_id: input_select.select_cooking_timer
+mode: restart
+```
+* [/config//stopwatch_change.yaml](./HomeAssistant/stopwatch_change.yaml)
+
+```
+alias: Stopwatch Change
+description: ''
+trigger:
+  - platform: state
+    entity_id: input_select.select_cooking_timer
+condition: []
+action:
+  - service: input_text.set_value
+    data:
+      value: '{{ states(''input_select.select_cooking_timer'') }}'
+    target:
+      entity_id: input_text.kitchen_display_entity_id
+  - service: input_text.set_value
+    data:
+      value: >-
+        {% if
+        state_attr(states("input_select.select_cooking_timer"),"friendly_name")
+        != None %}
+          {{ state_attr(states("input_select.select_cooking_timer"),"friendly_name") }}
+        {% else %}
+          {{ "None" }}.
+        {% endif %}
+    target:
+      entity_id: input_text.kitchen_display_friendly_name
+  - service: input_text.set_value
+    data:
+      value: >-
+        {% if state_attr(states("input_select.select_cooking_timer"),'duration')
+        != None %}
+          {{ state_attr(states("input_select.select_cooking_timer"),'duration') }}
+        {% else %}
+          {{ "None" }}.
+        {% endif %}
+    target:
+      entity_id: input_text.kitchen_display_duration
+  - service: input_text.set_value
+    data:
+      value: >-
+        {% if state_attr(states("input_select.select_cooking_timer"),'icon') !=
+        None %}
+          {{ state_attr(states("input_select.select_cooking_timer"),'icon') }}
+        {% else %}
+          {{ "None" }}.
+        {% endif %}
+    target:
+      entity_id: input_text.kitchen_display_icon
+mode: restart
+```
+
+* [/config//Update_demo_panel_TFT_on_file_change.yaml](./HomeAssistant/Update_demo_panel_TFT_on_file_change.yaml)
+
+```
+alias: Update demo panel TFT on file change
+description: ''
+trigger:
+  - platform: event
+    event_type: folder_watcher
+    event_data:
+      event_type: modified
+      path: /config/www/tft/
+condition: []
+action:
+  - service: esphome.nspanel_demo_upload_tft
+    data: {}
+mode: queued
+max: 2
+```
+
 ## Nextions Display
 
 * Here the data for the Nextion Editor
@@ -31,34 +270,11 @@ Herunder prøver jeg at beskrive hvad filen "[nspanel-demo.HMI](./Nextion/nspane
   * [/config/esphome/nspanel-demo.yaml](./ESPHome/nspanel-demo.yaml)
   * [/config/esphome/secrets.yaml](./ESPHome/secrets.yaml)
 
-## Home Assistant
-
-### Configuration:
-
-* [/config/configuration.yaml](./HomeAssistant/configuration.yaml)
-* [/config/secrets.yaml](./HomeAssistant/secrets.yaml)
-
-#### Helper
-Timer:
-* [/config/timer_merge_named/kitchens.yaml](./HomeAssistant/timer_kitchens.yaml)
-
-Input Select:
-* [/config/input_select_merge_named/kitchens.yaml](./HomeAssistant/input_select_kitchens.yaml)
-
-Text:
-* [/config/input_text_merge_named/kok_display_helper.yaml](./HomeAssistant/kok_display_helper.yaml)
-
-### Automation:
-
-  * [/config//000_nspanel.yaml](./HomeAssistant/000_nspanel.yaml)
-  * [/config//001_Create_Input_Select_Option_from_Timers](./HomeAssistant/001_Create_Input_Select_Option_from_Timers.yaml)
-  * [/config//Update_demo_panel_TFT_on_file_change.yaml](./HomeAssistant/Update_demo_panel_TFT_on_file_change.yaml)
   
-### lovelace:
+## lovelace:
 ![My test page layout in Lovelace](./HomeAssistant/Lovelace/LovelaceKitchenTestPage.png)
 
-
-#### Clock & Timer view:
+### Clock & Timer view:
 ```
 type: grid
 cards:
@@ -82,7 +298,7 @@ cards:
 columns: 1
 square: false
 ```
-#### Text Helper veiw:
+### Text Helper veiw:
 ```
 type: grid
 cards:
@@ -104,7 +320,7 @@ cards:
 columns: 1
 square: false
 ```
-#### NSPanel-Diagnostic:
+### NSPanel-Diagnostic:
 ```
 square: false
 columns: 1
@@ -131,7 +347,7 @@ cards:
     state_color: true
 ```
 
-#### NSPanel-Sensors
+### NSPanel-Sensors
 ```
 square: false
 columns: 1
@@ -152,7 +368,7 @@ cards:
     state_color: true
 ```
 
-#### NSPanel-Sensors:
+### NSPanel-Sensors:
 ```
 square: false
 columns: 1
@@ -173,7 +389,7 @@ cards:
     state_color: true
 ```
 
-#### Input_select Helper veiw:
+### Input_select Helper veiw:
 ```
 type: entities
 entities:
