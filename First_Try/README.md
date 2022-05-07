@@ -208,6 +208,60 @@ mode: single
 ```
 This piece of code, will create an input_select helper, contains a list of timer entity_id's when either a timer_reload service call is made or Home Assistant is restarted.
 
+* [/config//stopwatch_change.yaml](./HomeAssistant/stopwatch_change.yaml)
+
+```
+alias: Stopwatch Change
+description: ''
+trigger:
+  - platform: state
+    entity_id: input_select.select_cooking_timer
+condition: []
+action:
+  - service: input_text.set_value
+    data:
+      value: '{{ states(''input_select.select_cooking_timer'') }}'
+    target:
+      entity_id: input_text.kitchen_display_entity_id
+  - service: input_text.set_value
+    data:
+      value: >-
+        {% if
+        state_attr(states("input_select.select_cooking_timer"),"friendly_name")
+        != None %}
+          {{ state_attr(states("input_select.select_cooking_timer"),"friendly_name") }}
+        {% else %}
+          {{ "None" }}.
+        {% endif %}
+    target:
+      entity_id: input_text.kitchen_display_friendly_name
+  - service: input_text.set_value
+    data:
+      value: >-
+        {% if state_attr(states("input_select.select_cooking_timer"),'duration')
+        != None %}
+          {{ state_attr(states("input_select.select_cooking_timer"),'duration') }}
+        {% else %}
+          {{ "None" }}.
+        {% endif %}
+    target:
+      entity_id: input_text.kitchen_display_duration
+  - service: input_text.set_value
+    data:
+      value: >-
+        {% if state_attr(states("input_select.select_cooking_timer"),'icon') !=
+        None %}
+          {{ state_attr(states("input_select.select_cooking_timer"),'icon') }}
+        {% else %}
+          {{ "None" }}.
+        {% endif %}
+    target:
+      entity_id: input_text.kitchen_display_icon
+mode: restart
+```
+
+
+
 * [/config//000_nspanel_timer_navigate.yaml](./HomeAssistant/000_nspanel_timer_navigate.yaml)  
 
 ```
@@ -271,58 +325,6 @@ action:
       entity_id: input_select.select_cooking_timer
 mode: restart
 ```
-* [/config//stopwatch_change.yaml](./HomeAssistant/stopwatch_change.yaml)
-
-```
-alias: Stopwatch Change
-description: ''
-trigger:
-  - platform: state
-    entity_id: input_select.select_cooking_timer
-condition: []
-action:
-  - service: input_text.set_value
-    data:
-      value: '{{ states(''input_select.select_cooking_timer'') }}'
-    target:
-      entity_id: input_text.kitchen_display_entity_id
-  - service: input_text.set_value
-    data:
-      value: >-
-        {% if
-        state_attr(states("input_select.select_cooking_timer"),"friendly_name")
-        != None %}
-          {{ state_attr(states("input_select.select_cooking_timer"),"friendly_name") }}
-        {% else %}
-          {{ "None" }}.
-        {% endif %}
-    target:
-      entity_id: input_text.kitchen_display_friendly_name
-  - service: input_text.set_value
-    data:
-      value: >-
-        {% if state_attr(states("input_select.select_cooking_timer"),'duration')
-        != None %}
-          {{ state_attr(states("input_select.select_cooking_timer"),'duration') }}
-        {% else %}
-          {{ "None" }}.
-        {% endif %}
-    target:
-      entity_id: input_text.kitchen_display_duration
-  - service: input_text.set_value
-    data:
-      value: >-
-        {% if state_attr(states("input_select.select_cooking_timer"),'icon') !=
-        None %}
-          {{ state_attr(states("input_select.select_cooking_timer"),'icon') }}
-        {% else %}
-          {{ "None" }}.
-        {% endif %}
-    target:
-      entity_id: input_text.kitchen_display_icon
-mode: restart
-```
-
 * [/config//Update_demo_panel_TFT_on_file_change.yaml](./HomeAssistant/Update_demo_panel_TFT_on_file_change.yaml)
 
 ```
