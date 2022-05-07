@@ -15,9 +15,9 @@ And here is how it look like in font selector:
 * ID:0 TimesNewRoman30B(h:30,encode:utf-8,qty:88,datasize:8.12K)
 * ID:1 TimesNewRoman24B(h:24,encode:utf-8,qty:88,datasize:5.56K)
 
+# Nextion Color:
+Click Here for [Nextion HMI Color Converter  ](https://nodtem66.github.io/nextion-hmi-color-convert/index.html)  
 
-## Page Navigation
-### Faveskala:
 | Gimp-RGB      | Gimp-HEX | Nextion-HMI | Name       |                 Color                      | Used for           |
 |:---:           |:---:      |---:         |:---        |:---:                                       |:---                |
 | (0,0,0)       | #000000  | 0           | Black      | ![Black](./ColorSample/Black.png)          | Display background |
@@ -30,20 +30,24 @@ And here is how it look like in font selector:
 | (216,220,216) | #D8DCD8  | 55034       | Light White| ![White](./ColorSample/White.png)          | Button botten & right border |
 | (248,216,48)  | #F8D830  | 65222       | Yellow     | ![Yellow](./ColorSample/Yellow.png)        | Marking Active like Home Assistant|
 
-### Button:
+# Nextion Code:
+## Program.s - is run one time at boot
+```
+// The following code is only run once when power on, and is generally used for global variable definition and power on initialization data.
+// At present, the definition of global variable only supports 4-byte signed integer (int), and other types of global quantity declaration are not supported. If you want to use string type, you can use variable control in the page to implement.
 
-#### Navigation:
-| Navigation Bbutton Prev-Next-Sub  | Button Size |
+int sys0=0,sys1=0,sys2=0
+lcd_dev fffb 0002 0000 0020  // Fix problem with Sonoff NSPanel EU-version
+page 0                       // Power on start page 0
+```
+
+## Page Keys:
+|  No Key Press  | Key Presed |
 |:---: |:---: |
-|![Off](./ColorSample/NaviOff.png)| 56x50 px |
-|![ON](./ColorSample/NaviOn.png)| 56x50 px |
-
-#### Cooking Timer:
-| Cooking Button Prev-Play-Next  | Button Size |
-|:---: |:---: |
-|![Off](./ColorSample/ButtonOff.png)| 112x50 px |
-|![ON](./ColorSample/ButtonOn.png)| 112x50 px |
-
+| Navigation Keys |  |
+|![NaviOff](./png/NaviOFF.png)|![NaviOff](./png/NaviON.png)  |
+| CookTimer Keys|  |
+|![NaviOff](./png/CookingOFF.png)|![NaviOff](./png/CookingON.png)  |
 
 ## Page Attribute:
 | Name    | Navi        | CookTimer   | ScreenSaver |
@@ -65,12 +69,12 @@ And here is how it look like in font selector:
 | Atribute | Timer       | TouchCap |
 |---:      |:---:        |:---:     |
 | type:    | 51          | 5        |
-| id:      |             |          |
+| id:      | x           | x        |
 | objname: | sleep_timer | tc0      |
 | vscope:  | local       | local    |
-| tim:     | 30000       |          |
-| en:      | 1           |          |
-| val:     |             | 0        |
+| tim:     | 30000       | -------- |
+| en:      | 1           | -------- |
+| val:     | ----------- | 0        |
 
 ### Timer Event - Page Navi, CookTimer
 ```
