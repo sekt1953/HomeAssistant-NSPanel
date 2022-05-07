@@ -26,9 +26,7 @@ Herunder prøver jeg at beskrive hvad filen "[nspanel-demo.HMI](./Nextion/nspane
 * [/config/secrets.yaml](./HomeAssistant/secrets.yaml)
 
 #### Helper
-* Timer:  
-  * [/config/timer_merge_named/kitchens.yaml](./HomeAssistant/timer_kitchens.yaml)
-
+* Timer:  [/config/timer_merge_named/kitchens.yaml](./HomeAssistant/timer_kitchens.yaml)
 ```
 # Køkken timer
 kitchen_001_aeg_blodkogte:
@@ -82,17 +80,27 @@ kitchen_010_morgen_boller_bagetid:
   icon: mdi:coffee-outline
 ```
 
-* Input Select:
-  * [/config/input_select_merge_named/kitchens.yaml](./HomeAssistant/input_select_kitchens.yaml)
+* Input Select: [/config/input_select_merge_named/kitchens.yaml](./HomeAssistant/input_select_kitchens.yaml)
 
 ```
 select_cooking_timer:
   name: Cooking Timer
   options: ['vælg en timer']
 ```
-* Text:
-  * [/config/input_text_merge_named/nspanel_helper.yaml](./HomeAssistant/kok_display_helper.yaml)
+* Text: [/config/input_text_merge_named/nspanel_helper.yaml](./HomeAssistant/kok_display_helper.yaml)
+```
+kitchen_display_entity_id:
+  name: kitchen_display_entity_id
 
+kitchen_display_friendly_name:
+  name: kitchen_display_friendly_name
+
+kitchen_display_duration:
+  name: kitchen_display_duration
+
+kitchen_display_icon:
+  name: kitchen_display_icon
+```
 ### Automation:
 
 * [/config//001_Create_Input_Select_Option_from_Timers](./HomeAssistant/001_Create_Input_Select_Option_from_Timers.yaml)
