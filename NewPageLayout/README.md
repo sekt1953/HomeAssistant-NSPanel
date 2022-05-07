@@ -3,7 +3,7 @@
 ## New template 
 
 ## Page Navigation
-Faveskala:
+### Faveskala:
 | Gimp-RGB      | Gimp-HEX | Nextion-HMI | Name       |                 Color                      | Used for           |
 |:---           |:---      |:---         |:---        |:---                                        |:---                |
 | (0,0,0)       | #000000  | 0           | Black      | ![Black](./ColorSample/Black.png)          | Display background |
@@ -15,3 +15,14 @@ Faveskala:
 | (0,36,80)     | #002450  | 298         | Light Blue | ![Light Blue](./ColorSample/LightBlue.png) | Button On  |
 | (248,216,48)  | #F8D830  | 65222       | Yellow     | ![Yellow](./ColorSample/Yellow.png)        | Marking Active like Home Assistant|
 
+### Button:
+
+#### Navigation:
+
+
+
+#### Cooking Timer:
+|     |           Prev Cooking Timer        | Start Cooking Timer   | Next Cooking Timer | Button Size |
+|:--- |:---:                                |:---:      |:---:      |:---:  |
+| Off |![Off](./ColorSample/ButtonPrevOff.png) |![PlayOff](./ColorSample/ButtonPlayOff.png) |![NextOff](./ColorSample/ButtonNextOff.png)| 112x50 px|
+| On  |![PrevOn](./ColorSample/ButtonPrevOn.png)|![PlayOn](./ColorSample/ButtonPlayOn.png) | ![ON](./ColorSample/ButtonNextOn.png)  | 112x50 px |
