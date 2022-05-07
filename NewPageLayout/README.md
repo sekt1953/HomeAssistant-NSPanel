@@ -1,13 +1,14 @@
 # New Page Layout
 
 ## New template 
-![New template](./png/NewTemplate.png)
 
 ## Page Navigation
 Faveskala:
-![New template](./png/Faver.png)
-| | |
-|:---|:---|
-|![New template](./png/NaviOFF.png)|![New template](./png/NaviON.png)|
-|![New template](./png/CookingOFF.png)|![New template](./png/CookingON.png)|
-|![New template](./png/CookingOFF_small.png)|![New template](./png/CookingON_small.png)|
+|RGB            | HEX     | HMI   |            |
+|:---           |:---     |:---   |:---        |
+| (0,0,0)       | #000000 | 0     | Black      |
+| (24,28,24)    | #181C18 | 6371  | Dark Gray  |
+| (152,152,152) | #989898 | 40147 | light Gray |
+| (248,252,248) | #F8FCF8 | 65535 | White      |
+| (248,216,48)  | #F8D830 | 65222 | Yellow     |
+
