@@ -87,6 +87,20 @@ notify:
 ```
 * [/config/secrets.yaml](./HomeAssistant/secrets.yaml)
 ```
+# Use this file to store secrets like usernames and passwords.
+# Learn more at https://www.home-assistant.io/docs/configuration/secrets/
+
+# MariaDB mysql://user:password@SERVER_IP/DB_NAME?charset=utf8mb4
+# Kilde: https://www.home-assistant.io/integrations/recorder/#custom-database-engines
+maria_db: mysql://user:password@core-mariadb/database?charset=utf8mb4
+
+# Telegram
+telegram_api_token: 14xxxxxxxx:AAxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+telegram_chat_id_user1: "83xxxxxxx"        
+telegram_chat_id_group1: "-100xxxxxxxxxx"  
+
+telegram_NOTIFIER_User1: "NOTIFIER_user1"
+telegram_NOTIFIER_group1: "NOTIFIER_group_1"
 ```
 #### Helper
 * Timer:  [/config/timer_merge_named/kitchens.yaml](./HomeAssistant/timer_kitchens.yaml)
