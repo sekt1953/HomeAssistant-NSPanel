@@ -4,7 +4,7 @@
 
 ## Page Navigation
 Faveskala:
-| Gimp-RGB      | Gimp-HEX | Nextion-HMI | Name       |                 Color images               | Used for           |
+| Gimp-RGB      | Gimp-HEX | Nextion-HMI | Name       |                 Color                      | Used for           |
 |:---           |:---      |:---         |:---        |:---                                        |:---                |
 | (0,0,0)       | #000000  | 0           | Black      | ![Black](./ColorSample/Black.png)          | Display background |
 | (24,28,24)    | #181C18  | 6371        | Dark Gray  | ![Dark Gray](./ColorSample/DarkGray.png)   | Page Background    |
