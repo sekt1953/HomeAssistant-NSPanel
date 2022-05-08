@@ -37,6 +37,8 @@ homeassistant:
 
 folder_watcher:
   - folder: /config/www/tft
+    patterns:
+      - '*.tft'
 
 # Telegram
 telegram_bot:

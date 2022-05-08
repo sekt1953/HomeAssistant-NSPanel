@@ -5,7 +5,6 @@ trigger:
     event_type: folder_watcher
     event_data:
       event_type: modified
-      path: /config/www/tft/
 condition: []
 action:
   - service: esphome.nspanel_demo_upload_tft
