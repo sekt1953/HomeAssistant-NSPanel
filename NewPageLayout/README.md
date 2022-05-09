@@ -48,6 +48,7 @@ page 0                       // Power on start page 0
 |![NaviOff](./png/NaviOFF.png)|![NaviOff](./png/NaviON.png)  |
 | CookTimer Keys|  |
 |![NaviOff](./png/CookingOFF.png)|![NaviOff](./png/CookingON.png)  |
+|![QuickNaviOff](./png/QuickNaviOFF.png)|![QuickNaviOff](./png/QuickNaviON.png)  |
 
 ## Page Attribute:
 | Name    | Navi        | CookTimer   | ScreenSaver |
