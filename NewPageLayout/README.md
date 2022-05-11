@@ -93,12 +93,21 @@ page CookTimer                  // Switch back to page 0
 ### Page - Preinitialize Event
 ```
 tm0.tim=ScreenSaver.DisplayTime.val
+
 if(dp>ScreenSaver.MinPage.val)
 {
   ScreenSaver.PrevPage.val=dp-1
 }else
 {
   ScreenSaver.PrevPage.val=ScreenSaver.MaxPage.val
+}
+
+if(dp<ScreenSaver.MaxPage.val)
+{
+  ScreenSaver.NextPage.val=dp+1
+}else
+{
+  ScreenSaver.NextPage.val=ScreenSaver.MinPage.val
 }
 ```
 
@@ -152,8 +161,8 @@ sleep_timer.en=1
 | ***y:***        | ***0***          | ***0***          | ***0***          | ***0***           |
 | ***w:***        | ***56***         | ***56***         | ***56***         | ***56***          |
 | ***h:***        | ***50***         | ***50***         | ***50***         | ***50***          |
-| Code:                    |                                    |                  |                  |                   |
-|***Touch Release Event:***| ***page ScreenSaver.PrevPage.val***| 
+| Code:                    |                                    |                                   |                 | |
+|***Touch Release Event:***| ***page ScreenSaver.PrevPage.val***|***page ScreenSaver.NextPage.val***| ***page Quick***| |
 
 
 
