@@ -44,40 +44,58 @@ page 0                       // Power on start page 0
 ## Page Keys:
 |  No Key Press  | Key Presed |
 |:---: |:---: |
-| Navigation Keys |  |
-|![NaviOff](./png/NaviOFF.png)|![NaviOff](./png/NaviON.png)  |
 | CookTimer Keys|  |
 |![NaviOff](./png/CookingOFF.png)|![NaviOff](./png/CookingON.png)  |
-|![QuickNaviOff](./png/QuickNaviOFF.png)|![QuickNaviOff](./png/QuickNaviON.png)  |
 
 ## Page Attribute:
-| Name    | Navi        | CookTimer   | ScreenSaver |
-|---:     |:---:        |:---:        |:---:        |
-| PageId: | 0           | 1           | 2           |
-| type:   | 121         | 121         | 121         |
-| id:     | 0           | 0           | 0           |
-| vscope: | local       | local       | local       |
-| sta:    | solid color | solid color | solid color |
-| bco:    | 6371        | 6371        | 0           |
-| x:      | 0           | 0           | 0           |
-| y:      | 0           | 0           | 0           |
-| w:      | 480         | 480         | 480         |
-| h:      | 320         | 320         | 320         |
+| Name       | All page    | ScreenSaver |
+|---:        |:---:        |:---:        |
+| PageId:    |             |             |
+| type:      | 121         | 121         |
+| id:        | 0           | 0           |
+| vscope:    | local       | local       |
+| sta:       | solid color | solid color |
+| ***bco:*** | ***6371***  | 0           |
+| x:         | 0           | 0           |
+| y:         | 0           | 0           |
+| w:         | 480         | 480         |
+| h:         | 320         | 320         |
 
-
-## Page Navi, CookTimer
+## Page ScreenSaver 
 ### Non Visual Components
-| Atribute | Timer       | TouchCap |
-|---:      |:---:        |:---:     |
-| type:    | 51          | 5        |
-| id:      | x           | x        |
-| objname: | sleep_timer | tc0      |
-| vscope:  | local       | local    |
-| tim:     | 30000       | -------- |
-| en:      | 1           | -------- |
-| val:     | ----------- | 0        |
+| Atribute      | Variable     | Variable     |
+|---:           |:---:         |:---:         |
+| type:         | 52           | 52           |
+| id:           | 1            | 2            |
+| objname:      | brightness   | DisplayTime  |
+| ***vscope:*** | ***global*** | ***global*** |
+| sta:          | Number       | Number       |
+| ***val:***    | ***100***    | ***30000***  |
 
-### Timer Event - Page Navi, CookTimer
+### Page ScreenSaver - Touch Release Event:
+```
+dim=ScreenSaver.brightness.val  // Un-blank the screen
+page CookTimer                  // Switch back to page 0
+```
+
+## All Pages with the exception of ScreenSaver page
+### Non Visual Components
+| Atribute | Timer | TouchCap |
+|---:      |:---:  |:---:     |
+| type:    | 51    | 5        |
+| id:      | 5     | 6        |
+| objname: | tm0   | tc0      |
+| vscope:  | local | local    |
+| tim:     | 400   | -------- |
+| en:      | 1     | -------- |
+| val:     | ----- | 0        |
+
+### Page - Preinitialize Event
+```
+tm0.tim=ScreenSaver.DisplayTime.val
+```
+
+### Timer Event
 ```
 // Turn screen off
 ScreenSaver.brightness.val=dim
@@ -85,25 +103,135 @@ dim=0
 // Go to screensaver page
 page ScreenSaver 
 ```
-### TouchCap - Page Navi, CookTimer
+### TouchCap
 ```
 Touch Release Event()
 //Reset sleep timer
 sleep_timer.en=1
 ```
-## Page ScreenSaver 
-### Non Visual Components
-| Atribute | Variable   |
-|---:      |:---:       |
-| type:    | 52         |
-| id:      | 1          |
-| objname: | brightness |
-| vscope:  | global     |
-| sta:     | Number     |
-| val:     | 100        |
+## Page Navigation All Pages with the exception of ScreenSaver page
+### Images of navagations key's
+|  No Key Press ID:0 | Key Presed ID:1 |
+|:---: |:---: |
+| Navigation Keys |  |
+|![NaviOff](./png/NaviOFF.png)|![NaviOff](./png/NaviON.png)  |
 
-### Page Touch Release Event:
-```
-dim=ScreenSaver.brightness.val  // Un-blank the screen
-page Navi                       // Switch back to page 0
-```
+### Visual Navigation Components on All Pages with the exception of ScreenSaver page:
+| Atribute        | Prev button      | Next button      | Quick button     | Time/PageName     |
+|---:             |:---:             |:---:             |:---:             |:---:              |
+| type:           | 98               | 98               | 98               | 116               |
+| id:             | **1**            | **2**            | **3**            | **4**             |         
+| objname:        | b0               | b1               | b2               | t0                |
+| vscope:         | local            | local            | local            | global            |
+| ***sta:***      | ***corp image*** | ***corp image*** | ***corp image*** | ***solid color*** | 
+| style:          | ---------------- | ---------------- | ---------------- | flat              |
+| key:            | ---------------- | ---------------- | ---------------- | None              |
+| font:           | 0                | 0                | 0                | 0                 |
+| bco:            | ---------------- | ---------------- | ---------------- | 10597             |
+| pco:            | ---------------- | ---------------- | ---------------- | 65535             |
+| ***picc:***     | ***0***          | ***0***          | ***0***          | ----------------- |
+| ***picc2:***    | ***1***          | ***1***          | ***1***          | ----------------- |
+| ***pco:***      | ***0***          | ***0***          | ***0***          | ----------------- |
+| ***pco2:***     | ***65535***      | ***65535***      | ***65535***      | ----------------- |
+| xcen:           | Center           | Center           | Center           | Center            |
+| ycen:           | Center           | Center           | Center           | Center            |
+| pw:             | ---------------- | ---------------- | ---------------- | Character         |
+| ***txt:***      |                  |                  |                  | ***PageName***    |
+| ***txt_maxi:*** | 10               | 10               | 10               | ***20***          |
+| isbr:           | False            | False            | False            | False             |
+| spax:           | 0                | 0                | 0                | 0                 |
+| spay:           | 0                | 0                | 0                | 0                 |
+| ***x:***        | ***56***         | ***336***        | ***392***        | ***112***         |
+| ***y:***        | ***0***          | ***0***          | ***0***          | ***0***           |
+| ***w:***        | ***56***         | ***56***         | ***56***         | ***56***          |
+| ***h:***        | ***50***         | ***50***         | ***50***         | ***50***          |
+|                 |                  |                  |                  |                   |
+|Touch Release Event| page Cooktimer | page Kitchen     | page Climate     | page Laundry      |
+
+
+
+### Visual Quick Navigation Components:
+|  No Key Press ID:4  | Key Presed ID:5 |
+|:---: |:---: |
+| Quick Navigation page | |
+|![QuickNaviOff](./png/QuickNaviOFF.png)|![QuickNaviOff](./png/QuickNaviON.png)  |
+
+### Visual Navigation Components on All Pages with the exception of ScreenSaver page:
+| Atribute        | Cookingtimer     | Kitchen          | Climate          | Laundry          |
+|---:             |:---:             |:---:             |:---:             |:---:             |
+| type:           | 98               | 98               | 98               | 98               |
+| id:             | **4**            | **5**            | **6**            | **7**            |
+| objname:        | b3               | b4               | b5               | b6               |
+| vscope:         | local            | local            | local            | local            |
+| ***sta:***      | ***corp image*** | ***corp image*** | ***corp image*** | ***corp image*** |
+| font:           | 0                | 0                | 0                | 0                |
+| ***picc:***     | ***4***          | ***4***          | ***4***          | ***4***          |
+| ***picc2:***    | ***5***          | ***5***          | ***5***          | ***5***          |
+| ***pco:***      | ***0***          | ***0***          | ***0***          | ***0***          |
+| ***pco2:***     | ***65535***      | ***65535***      | ***65535***      | ***65535***      |
+| xcen:           | Center           | Center           | Center           | Center           |
+| ycen:           | Center           | Center           | Center           | Center           |
+| ***txt:***      |                  |                  |                  |                  |
+| ***txt_maxi:*** | 10               | 10               | 10               | 10               |
+| isbr:           | False            | False            | False            | False            |
+| spax:           | 0                | 0                | 0                | 0                |
+| spay:           | 0                | 0                | 0                | 0                |
+| ***x:***        | ***0***          | ***112***        | ***224***        | ***336***        |
+| ***y:***        | ***65***         | ***65***         | ***65***         | ***65***         |
+| ***w:***        | ***112***        | ***112***        | ***112***        | ***112***        |
+| ***h:***        | ***85***         | ***85***         | ***85***         | ***85***         |
+| Code:           |                  |                  |                  |                  |
+|***Touch Release Event:***|***page CookTimer***|***page page Kitchen***|***page Climate***|***page Laundry***|
+
+| Atribute        | FrontDoor        | LivingRoom       | Toilet           | Windows          |
+|---:             |:---:             |:---:             |:---:             |:---:             |
+| type:           | 98               | 98               | 98               | 98               |
+| id:             | **8**            | **9**            | **10**           | **11**           |
+| objname:        | b7               | b8               | b9               | b10              |
+| vscope:         | local            | local            | local            | local            |
+| ***sta:***      | ***corp image*** | ***corp image*** | ***corp image*** | ***corp image*** |
+| font:           | 0                | 0                | 0                | 0                |
+| ***picc:***     | ***4***          | ***4***          | ***4***          | ***4***          |
+| ***picc2:***    | ***5***          | ***5***          | ***5***          | ***5***          |
+| ***pco:***      | ***0***          | ***0***          | ***0***          | ***0***          |
+| ***pco2:***     | ***65535***      | ***65535***      | ***65535***      | ***65535***      |
+| xcen:           | Center           | Center           | Center           | Center           |
+| ycen:           | Center           | Center           | Center           | Center           |
+| ***txt:***      |                  |                  |                  |                  |
+| ***txt_maxi:*** | 10               | 10               | 10               | 10               |
+| isbr:           | False            | False            | False            | False            |
+| spax:           | 0                | 0                | 0                | 0                |
+| spay:           | 0                | 0                | 0                | 0                |
+| ***x:***        | ***0***          | ***112***        | ***224***        | ***336***        |
+| ***y:***        | ***150***        | ***150***        | ***150***        | ***150***        |
+| ***w:***        | ***112***        | ***112***        | ***112***        | ***112***        |
+| ***h:***        | ***85***         | ***85***         | ***85***         | ***85***         |
+| Code:           |                  |                  |                  |                  |
+|***Touch Release Event:***|***page FrontDoor***|***page Livingroom***|***page Toilet***|***page Windows***|
+
+| Atribute        | 3DPrinter        | PCScreen         |                  |                  |
+|---:             |:---:             |:---:             |:---:             |:---:             |
+| type:           | 98               | 98               | 98               | 98               |
+| id:             | **12**           | **13**           |                  |                  |
+| objname:        | b11              | b12              |                  |                  |
+| vscope:         | local            | local            | local            | local            |
+| ***sta:***      | ***corp image*** | ***corp image*** | ***corp image*** | ***corp image*** |
+| font:           | 0                | 0                | 0                | 0                |
+| ***picc:***     | ***4***          | ***4***          | ***4***          | ***4***          |
+| ***picc2:***    | ***5***          | ***5***          | ***5***          | ***5***          |
+| ***pco:***      | ***0***          | ***0***          | ***0***          | ***0***          |
+| ***pco2:***     | ***65535***      | ***65535***      | ***65535***      | ***65535***      |
+| xcen:           | Center           | Center           | Center           | Center           |
+| ycen:           | Center           | Center           | Center           | Center           |
+| ***txt:***      |                  |                  |                  |                  |
+| ***txt_maxi:*** | 10               | 10               | 10               | 10               |
+| isbr:           | False            | False            | False            | False            |
+| spax:           | 0                | 0                | 0                | 0                |
+| spay:           | 0                | 0                | 0                | 0                |
+| ***x:***        | ***0***          | ***112***        | ***224***        | ***336***        |
+| ***y:***        | ***235***        | ***235***        | ***235***        | ***235***        |
+| ***w:***        | ***112***        | ***112***        | ***112***        | ***112***        |
+| ***h:***        | ***85***         | ***85***         | ***85***         | ***85***         |
+| Code:           |                  |                  |                  |                  |
+|***Touch Release Event:***|***page page Printer***|***page PcScreen**|       |         |
+
