@@ -63,14 +63,14 @@ page 0                       // Power on start page 0
 
 ## Page ScreenSaver 
 ### Non Visual Components
-| Atribute      | Variable     | Variable     |
-|---:           |:---:         |:---:         |
-| type:         | 52           | 52           |
-| id:           | 1            | 2            |
-| objname:      | brightness   | DisplayTime  |
-| ***vscope:*** | ***global*** | ***global*** |
-| sta:          | Number       | Number       |
-| ***val:***    | ***100***    | ***30000***  |
+| Atribute      | Variable         | Variable          | Variable       | Variable       | Variable      | Variable      |
+|---:           |:---:             |:---:              |:---:           |:---:           |:---:          |:---:          |
+| type:         | 52               | 52                | 52             | 52             | 52            | 52            |
+| id:           | 1                | 2                 | 3              | 4              | 5             | 6             |
+| objname:      | ***brightness*** | ***DisplayTime*** | ***PrevPage*** | ***NextPage*** | ***MinPage*** | ***MaxPage*** |
+| ***vscope:*** | ***global***     | ***global***      | ***global***   | ***global***   | ***global***  | ***global***  |
+| sta:          | Number           | Number            | Number         | Number         | Number        | Number        |
+| ***val:***    | ***100***        | ***30000***       | 0              | 0              | ***0***       | ***10***      |
 
 ### Page ScreenSaver - Touch Release Event:
 ```
@@ -93,6 +93,13 @@ page CookTimer                  // Switch back to page 0
 ### Page - Preinitialize Event
 ```
 tm0.tim=ScreenSaver.DisplayTime.val
+if(dp>ScreenSaver.MinPage.val)
+{
+  ScreenSaver.PrevPage.val=dp-1
+}else
+{
+  ScreenSaver.PrevPage.val=ScreenSaver.MaxPage.val
+}
 ```
 
 ### Timer Event
@@ -145,8 +152,8 @@ sleep_timer.en=1
 | ***y:***        | ***0***          | ***0***          | ***0***          | ***0***           |
 | ***w:***        | ***56***         | ***56***         | ***56***         | ***56***          |
 | ***h:***        | ***50***         | ***50***         | ***50***         | ***50***          |
-|                 |                  |                  |                  |                   |
-|Touch Release Event| page Cooktimer | page Kitchen     | page Climate     | page Laundry      |
+| Code:                    |                                    |                  |                  |                   |
+|***Touch Release Event:***| ***page ScreenSaver.PrevPage.val***| 
 
 
 
