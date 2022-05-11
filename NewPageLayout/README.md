@@ -41,12 +41,6 @@ lcd_dev fffb 0002 0000 0020  // Fix problem with Sonoff NSPanel EU-version
 page 0                       // Power on start page 0
 ```
 
-## Page Keys:
-|  No Key Press ID:4  | Key Presed ID:5|
-|:---: |:---: |
-| CookTimer Keys|  |
-|![NaviOff](./png/CookingOFF.png)|![NaviOff](./png/CookingON.png)  |
-
 ## Page Attribute:
 | Name       | All page    | ScreenSaver |
 |---:        |:---:        |:---:        |
@@ -167,7 +161,8 @@ sleep_timer.en=1
 
 
 
-### Visual Quick Navigation Components:
+## Visual Quick Navigation Components:
+### Images for quick navigation:
 |  No Key Press ID:2  | Key Presed ID:3 |
 |:---: |:---: |
 | Quick Navigation page | |
@@ -252,3 +247,10 @@ sleep_timer.en=1
 | Code:                    |                  |                  |         |                  |
 |***Touch Release Event:***|***page Printer***|***page PcScreen**|         |                  |
 
+
+## Page CookTimer
+### Images of cooking timer page
+|  No Key Press ID:4  | Key Presed ID:5|
+|:---: |:---: |
+| CookTimer Keys|  |
+|![NaviOff](./png/CookingOFF.png)|![NaviOff](./png/CookingON.png)  |
