@@ -42,7 +42,7 @@ page 0                       // Power on start page 0
 ```
 
 ## Page Keys:
-|  No Key Press  | Key Presed |
+|  No Key Press ID:4  | Key Presed ID:5|
 |:---: |:---: |
 | CookTimer Keys|  |
 |![NaviOff](./png/CookingOFF.png)|![NaviOff](./png/CookingON.png)  |
@@ -151,7 +151,7 @@ sleep_timer.en=1
 
 
 ### Visual Quick Navigation Components:
-|  No Key Press ID:4  | Key Presed ID:5 |
+|  No Key Press ID:2  | Key Presed ID:3 |
 |:---: |:---: |
 | Quick Navigation page | |
 |![QuickNaviOff](./png/QuickNaviOFF.png)|![QuickNaviOff](./png/QuickNaviON.png)  |
