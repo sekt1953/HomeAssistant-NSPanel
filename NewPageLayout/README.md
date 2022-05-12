@@ -61,7 +61,7 @@ page 0                       // Power on start page 0
 |---:           |:---:             |:---:              |:---:           |:---:           |:---:          |:---:          |
 | type:         | 52               | 52                | 52             | 52             | 52            | 52            |
 | id:           |                  |                   |                |                |               |               |
-| objname:      | ***brightness*** | ***DisplayTime*** | ***PrevPage*** | ***NextPage*** | ***MinPage*** | ***MaxPage*** |
+| objname:      | ***Brightness*** | ***DisplayTime*** | ***prevPage*** | ***nextPage*** | ***minPage*** | ***maxPage*** |
 | ***vscope:*** | ***global***     | ***global***      | ***global***   | ***global***   | ***global***  | ***global***  |
 | sta:          | Number           | Number            | Number         | Number         | Number        | Number        |
 | ***val:***    | ***100***        | ***30000***       | 0              | 0              | ***0***       | ***10***      |
@@ -69,7 +69,7 @@ page 0                       // Power on start page 0
 ### Page ScreenSaver - Touch Release Event:
 ```
 // Restore brightness
-dim=ScreenSaver.brightness.val  
+dim=ScreenSaver.Brightness.val  
 // Switch to default page
 page CookTimer                  
 ```
@@ -91,27 +91,27 @@ page CookTimer
 // set time before screensaver go in to function.
 tm0.tim=ScreenSaver.DisplayTime.val
 // set value for Previous page no.
-if(dp>ScreenSaver.MinPage.val)
+if(dp>ScreenSaver.minPage.val)
 {
-  ScreenSaver.PrevPage.val=dp-1
+  ScreenSaver.prevPage.val=dp-1
 }else
 {
-  ScreenSaver.PrevPage.val=ScreenSaver.MaxPage.val
+  ScreenSaver.prevPage.val=ScreenSaver.maxPage.val
 }
 // set value for next page no.
-if(dp<ScreenSaver.MaxPage.val)
+if(dp<ScreenSaver.maxPage.val)
 {
-  ScreenSaver.NextPage.val=dp+1
+  ScreenSaver.nextPage.val=dp+1
 }else
 {
-  ScreenSaver.NextPage.val=ScreenSaver.MinPage.val
+  ScreenSaver.nextPage.val=ScreenSaver.minPage.val
 }
 ```
 
 ### Timer Event
 ```
 // Save brightness value befor blackout
-ScreenSaver.brightness.val=dim
+ScreenSaver.Brightness.val=dim
 // Turn screen off
 dim=0
 // Go to screensaver page
@@ -274,7 +274,6 @@ This butten will send event to NSPanel's ESP32 for Press and Release Event:
 | ***pco2:***     | ***65535***      | ***65535***      | ***65535***      |
 | xcen:           | Center           | Center           | Center           |
 | ycen:           | Center           | Center           | Center           |
-| pw:             | ---------------- | ---------------- | ---------------- |
 | ***txt:***      |                  |                  |                  |
 | txt_maxi:       | 10               | 10               | 10               |
 | isbr:           | False            | False            | False            |
@@ -284,11 +283,11 @@ This butten will send event to NSPanel's ESP32 for Press and Release Event:
 | ***y:***        | ***260***        | ***260***        | ***260***        |
 | ***w:***        | ***112***        | ***112***        | ***112***        |
 | ***h:***        | ***50***         | ***50***         | ***50***         |
-| Code:           |                  |                  |                  |
+| ***Code:***     |                  |                  |                  |
 | -Touch Press Event:|               |                  |                  |
-| --Send Component ID: | ***Enabled*** | ***Enabled***  | ***Enabled***    |
+| ***--Send Component ID:*** | ***Enabled*** | ***Enabled***  | ***Enabled***    |
 | -Touch Release Event:|             |                  |                  |
-| --Send Component ID: | ***Enabled*** | ***Enabled***  | ***Enabled***    |
+| ***--Send Component ID:*** | ***Enabled*** | ***Enabled***  | ***Enabled***    |
 
 
 ### Text Boxes for timer data from Home Assistant:
