@@ -293,52 +293,27 @@ This butten will send event to NSPanel's ESP32 for Press and Release Event:
 |:---: |
 |![CookTimerActive](./png/CookTimerActive.png)|
 
-| Atribute        | timer Frendly name | timer state | timer state txt | timer duration | timer duration txt |
-|---:             |:---:               |:---:        |:---:            |:---:           |:---:               |
-| type:           | 116                | 116         | 116             | 116            | 116                |
-| id:             |                    |             |                 |                |                    |
-| objname:        | t1_Frendly         | t2          | t2_State        | t3             | t3_Duration        |
-| vscope:         | global             | local       | global          | local          | global             |
-| sta:            | solid color        | solid color | solid color     | solid color    | solid color        |
-| style:          | flat               | flat        | flat            | flat           | flat               |
-| key:            | None               | None        | None            | None           | None               |
-| font:           | 0                  | 0           | 0               | 0              | 0                  |
-| bco:            | 10597              | 10597       | 10597           | 10597          | 10597              |
-| pco:            | 65535              | 65535       | 65535           | 65535          | 65535              |
-| xcen:           | Center             | Right       | Left            | Right          | Left               |
-| ycen:           | Center             | Center      | Center          | Center         | Center             |
-| pw:             | Character          | Character   | Character       | Character      | Character          |
-| txt:            | frendly name       | State:      | timer state     | Duration:      | timer duration     | 
-| txt_maxi:       | 40                 | 10          | 10              | 10             | 10                 |
-| isbr:           | False              | False       | False           | False          | False              |
-| spax:           | 0                  | 0           | 0               | 0              | 0                  |
-| spay:           | 0                  | 0           | 0               | 0              | 0                  |
-| x:              | 0                  | 0           | 168             | 0              | 168                |
-| y:              | 200                | 100         | 100             | 130            | 130                |
-| w:              | 448                | 140         | 280             | 140            | 280                |
-| h:              | 50                 | 30          | 30              | 30             | 30                 |
-
-| Atribute        | timr finish | timer finish txt |
-|---:             |:---:        |:---:             |
-| type:           | 116         | 116              |
-| id:             |             |                  |
-| objname:        | t3          | t3_Finish        |
-| vscope:         | local       | global           |
-| sta:            | solid color | solid color      |
-| style:          | flat        | flat             |
-| key:            | None        | None             |
-| font:           | 0           | 0                |
-| bco:            | 10597       | 10597            |
-| pco:            | 65535       | 65535            |
-| xcen:           | Right       | Left             |
-| ycen:           | Center      | Center           |
-| pw:             | Character   | Character        |
-| txt:            | Finishes at:| timer finish     |
-| txt_maxi:       | 20          | 40               |
-| isbr:           | False       | False            |
-| spax:           | 0           | 0                |
-| spay:           | 0           | 0                |
-| x:              | 0           | 168              |
-| y:              | 100         | 100              |
-| w:              | 140         | 280              |
-| h:              | 30          | 30               |
+| Atribute        | timer Frendly name | timer state | timer state txt | timer duration | timer duration txt | timer finish | timer finish txt |
+|---:             |:---:               |:---:        |:---:            |:---:           |:---:               |:---:         |:---:             |
+| type:           | 116                | 116         | 116             | 116            | 116                | 116          | 116              |
+| id:             |                    |             |                 |                |                    |              |                  |
+| ***objname:***  | ***t1_Frendly***   | ***t2***    | ***t2_State***  | ***t3***       | ***t3_Duration***  | ***t3***     | ***t3_Finish***  |
+| ***vscope:***   | ***global***       | local       | ***global***    | local          | ***global***       | local        | ***global***     |
+| sta:            | solid color        | solid color | solid color     | solid color    | solid color        | solid color  | solid color      |
+| style:          | flat               | flat        | flat            | flat           | flat               | flat         | flat             |
+| key:            | None               | None        | None            | None           | None               | None         | None             |
+| font:           | 0                  | 0           | 0               | 0              | 0                  | 0            | 0                |
+| ***bco:***      | ***10597***        | ***10597*** | ***10597***     | ***10597***    | ***10597***        | ***10597***  | ***10597***      |
+| ***pco:***      | ***65535***        | ***65535*** | ***65535***     | ***65535***    | ***65535***        | ***65535***  | ***65535***      |
+| ***xcen:***     | Center             | ***Right*** | ***Left***      | ***Right***    | ***Left***         | ***Right***  | ***Left***       |
+| ycen:           | Center             | Center      | Center          | Center         | Center             | Center       | Center           |
+| pw:             | Character          | Character   | Character       | Character      | Character          | Character    | Character        |
+| ***txt:***      | ***frendly name*** | ***State:***|***timer state***|***Duration:*** |***timer duration***|***Finishes at:***|***timer finish***| 
+| ***txt_maxi:*** | ***40***           | 10          | 10              | 10             | 10                 | 10           | 10               |
+| isbr:           | False              | False       | False           | False          | False              | False        | False            |
+| spax:           | 0                  | 0           | 0               | 0              | 0                  | 0            | 0                |
+| spay:           | 0                  | 0           | 0               | 0              | 0                  | 0            | 0                |
+| ***x:***        | ***0***            | ***0***     | ***168***       | ***0***        | ***168***          | ***0***      | ***168***        |
+| ***y:***        | ***200***          | ***100***   | ***100***       | ***130***      | ***130***          | ***160***    | ***160***        |
+| ***w:***        | ***448***          | ***140***   | ***280***       | ***140***      | ***280***          | ***140***    | ***280***        |
+| ***h:***        | ***50***           | 30          | 30              | 30             | 30                 | 30           | 30               |
