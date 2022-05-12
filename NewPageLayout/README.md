@@ -161,7 +161,7 @@ sleep_timer.en=1
 | ***w:***        | ***56***         | ***56***         | ***56***         | ***56***          |
 | ***h:***        | ***50***         | ***50***         | ***50***         | ***50***          |
 | Code:                    |                                    |                                   |                 | |
-|***Touch Release Event:***| ***page ScreenSaver.PrevPage.val***|***page ScreenSaver.NextPage.val***| ***page Quick***| |
+|***Touch Release Event:***| ***page ScreenSaver.prevPage.val***|***page ScreenSaver.nextPage.val***| ***page Quick***| |
 
 
 
