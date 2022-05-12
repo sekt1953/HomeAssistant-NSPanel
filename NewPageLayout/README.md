@@ -55,6 +55,7 @@ page 0                       // Power on start page 0
 | w:         | 480         | 480         |
 | h:         | 320         | 320         |
 
+
 ## Page ScreenSaver 
 ### Non Visual Components
 | Atribute      | Variable         | Variable          | Variable       | Variable       | Variable      | Variable      |
