@@ -288,7 +288,11 @@ This butten will send event to NSPanel's ESP32 for Press and Release Event:
 | --Send Component ID: | ***Enabled*** | ***Enabled***  | ***Enabled***    |
 
 
-### Text Boxes for timer datat from Home Assistant:
+### Text Boxes for timer data from Home Assistant:
+|  CookTimerActve  |
+|:---: |
+|![CookTimerActive](./png/CookTimerActive.png)|
+
 | Atribute        | timer Frendly name | timer state | timer state txt | timer duration | timer duration txt |
 |---:             |:---:               |:---:        |:---:            |:---:           |:---:               |
 | type:           | 116                | 116         | 116             | 116            | 116                |
