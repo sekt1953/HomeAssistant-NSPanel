@@ -289,15 +289,17 @@ This butten will send event to NSPanel's ESP32 for Press and Release Event:
 
 
 ### Text Boxes for timer data from Home Assistant:
-|  CookTimerActve  |
+|  CookTimerActve text |
 |:---: |
 |![CookTimerActive](./png/CookTimerActive.png)|
+
+The text boxes "t1_Frendly","t2_State","t3_Duration" & "t4_Finish" will all get data from Home Assistant via ESPHome code for NSPanel:
 
 | Atribute        | timer Frendly name | timer state | timer state txt | timer duration | timer duration txt | timer finish | timer finish txt |
 |---:             |:---:               |:---:        |:---:            |:---:           |:---:               |:---:         |:---:             |
 | type:           | 116                | 116         | 116             | 116            | 116                | 116          | 116              |
 | id:             |                    |             |                 |                |                    |              |                  |
-| ***objname:***  | ***t1_Frendly***   | ***t2***    | ***t2_State***  | ***t3***       | ***t3_Duration***  | ***t3***     | ***t3_Finish***  |
+| ***objname:***  | ***t1_Frendly***   | ***t2***    | ***t2_State***  | ***t3***       | ***t3_Duration***  | ***t4***     | ***t4_Finish***  |
 | ***vscope:***   | ***global***       | local       | ***global***    | local          | ***global***       | local        | ***global***     |
 | sta:            | solid color        | solid color | solid color     | solid color    | solid color        | solid color  | solid color      |
 | style:          | flat               | flat        | flat            | flat           | flat               | flat         | flat             |
