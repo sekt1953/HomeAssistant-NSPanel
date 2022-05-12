@@ -60,7 +60,7 @@ page 0                       // Power on start page 0
 | Atribute      | Variable         | Variable          | Variable       | Variable       | Variable      | Variable      |
 |---:           |:---:             |:---:              |:---:           |:---:           |:---:          |:---:          |
 | type:         | 52               | 52                | 52             | 52             | 52            | 52            |
-| id:           | 1                | 2                 | 3              | 4              | 5             | 6             |
+| id:           |                  |                   |                |                |               |               |
 | objname:      | ***brightness*** | ***DisplayTime*** | ***PrevPage*** | ***NextPage*** | ***MinPage*** | ***MaxPage*** |
 | ***vscope:*** | ***global***     | ***global***      | ***global***   | ***global***   | ***global***  | ***global***  |
 | sta:          | Number           | Number            | Number         | Number         | Number        | Number        |
@@ -68,8 +68,10 @@ page 0                       // Power on start page 0
 
 ### Page ScreenSaver - Touch Release Event:
 ```
-dim=ScreenSaver.brightness.val  // Un-blank the screen
-page CookTimer                  // Switch back to page 0
+// Restore brightness
+dim=ScreenSaver.brightness.val  
+// Switch to default page
+page CookTimer                  
 ```
 
 ## All Pages with the exception of ScreenSaver page
@@ -77,7 +79,7 @@ page CookTimer                  // Switch back to page 0
 | Atribute | Timer | TouchCap |
 |---:      |:---:  |:---:     |
 | type:    | 51    | 5        |
-| id:      | 5     | 6        |
+| id:      |       |          |
 | objname: | tm0   | tc0      |
 | vscope:  | local | local    |
 | tim:     | 400   | -------- |
@@ -86,7 +88,7 @@ page CookTimer                  // Switch back to page 0
 
 ### Page - Preinitialize Event
 ```
-// set time before screensaver 
+// set time before screensaver go in to function.
 tm0.tim=ScreenSaver.DisplayTime.val
 // set value for Previous page no.
 if(dp>ScreenSaver.MinPage.val)
@@ -108,8 +110,9 @@ if(dp<ScreenSaver.MaxPage.val)
 
 ### Timer Event
 ```
-// Turn screen off
+// Save brightness value befor blackout
 ScreenSaver.brightness.val=dim
+// Turn screen off
 dim=0
 // Go to screensaver page
 page ScreenSaver 
@@ -117,7 +120,7 @@ page ScreenSaver
 ### TouchCap
 #### Touch Release Event()
 ```
-// Reset sleep timer
+// Reset sleep timer when display is touch
 sleep_timer.en=1
 ```
 ## Page Navigation All Pages with the exception of ScreenSaver page
@@ -131,8 +134,8 @@ sleep_timer.en=1
 | Atribute        | Prev button      | Next button      | Quick button     | Time/PageName     |
 |---:             |:---:             |:---:             |:---:             |:---:              |
 | type:           | 98               | 98               | 98               | 116               |
-| id:             | **1**            | **2**            | **3**            | **4**             |         
-| objname:        | b0               | b1               | b2               | t0                |
+| id:             |                  |                  |                  |                   |         
+| objname:        | b0               | b1               | b2               | t0_time           |
 | vscope:         | local            | local            | local            | global            |
 | ***sta:***      | ***corp image*** | ***corp image*** | ***corp image*** | ***solid color*** | 
 | style:          | ---------------- | ---------------- | ---------------- | flat              |
@@ -172,7 +175,7 @@ sleep_timer.en=1
 | Atribute        | Cookingtimer     | Kitchen          | Climate          | Laundry          |
 |---:             |:---:             |:---:             |:---:             |:---:             |
 | type:           | 98               | 98               | 98               | 98               |
-| id:             | **4**            | **5**            | **6**            | **7**            |
+| id:             |                  |                  |                  |                  |
 | objname:        | b3               | b4               | b5               | b6               |
 | vscope:         | local            | local            | local            | local            |
 | ***sta:***      | ***corp image*** | ***corp image*** | ***corp image*** | ***corp image*** |
@@ -198,7 +201,7 @@ sleep_timer.en=1
 | Atribute        | FrontDoor        | LivingRoom       | Toilet           | Windows          |
 |---:             |:---:             |:---:             |:---:             |:---:             |
 | type:           | 98               | 98               | 98               | 98               |
-| id:             | **8**            | **9**            | **10**           | **11**           |
+| id:             |                  |                  |                  |                  |
 | objname:        | b7               | b8               | b9               | b10              |
 | vscope:         | local            | local            | local            | local            |
 | ***sta:***      | ***corp image*** | ***corp image*** | ***corp image*** | ***corp image*** |
@@ -224,7 +227,7 @@ sleep_timer.en=1
 | Atribute        | 3DPrinter        | PCScreen         |                  |                  |
 |---:             |:---:             |:---:             |:---:             |:---:             |
 | type:           | 98               | 98               | 98               | 98               |
-| id:             | **12**           | **13**           |                  |                  |
+| id:             |                  |                  |                  |                  |
 | objname:        | b11              | b12              |                  |                  |
 | vscope:         | local            | local            | local            | local            |
 | ***sta:***      | ***corp image*** | ***corp image*** | ***corp image*** | ***corp image*** |
@@ -260,9 +263,9 @@ This butten will send event to NSPanel's ESP32 for Press and Release Event:
 | Atribute        | Prev button      | Start button     | Next button      |
 |---:             |:---:             |:---:             |:---:             |
 | type:           | 98               | 98               | 98               |
-| id:             | **4**            | **5**            | **6**            |
-| objname:        | b3_Prev          | b4_Start         | b5_Next          |
-| vscope:         | global           | global           | global           |
+| id:             |                  |                  |                  |
+| ***objname:***  | ***b3_Prev***    | ***b4_Start***   | ***b5_Next***    |
+| ***vscope:***   | ***global***     | ***global***     | ***global***     |
 | ***sta:***      | ***corp image*** | ***corp image*** | ***corp image*** |
 | font:           | 0                | 0                | 0                |
 | ***picc:***     | ***4***          | ***4***          | ***4***          |
@@ -273,7 +276,7 @@ This butten will send event to NSPanel's ESP32 for Press and Release Event:
 | ycen:           | Center           | Center           | Center           |
 | pw:             | ---------------- | ---------------- | ---------------- |
 | ***txt:***      |                  |                  |                  |
-| ***txt_maxi:*** | 10               | 10               | 10               |
+| txt_maxi:       | 10               | 10               | 10               |
 | isbr:           | False            | False            | False            |
 | spax:           | 0                | 0                | 0                |
 | spay:           | 0                | 0                | 0                |
