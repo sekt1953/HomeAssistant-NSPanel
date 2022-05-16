@@ -1,0 +1,80 @@
+#Something about timer:
+{{ states(states('input_select.select_cooking_timer')) == 'active' }}
+{{ states(states('input_select.select_cooking_timer')) }}
+{{ states("input_select.select_cooking_timer") }}
+{% set Selected_Entry =states("input_select.select_cooking_timer") %}
+{{ Selected_Entry }}
+--------
+{% if states(Selected_Entry) == "active" %}
+  {% set kickofftime = now() %}
+  {% set finishtime = states.timer.kitchen_004_rugbrod_bagetid.attributes.finishes_at %}
+  {% set lefttime = (((as_timestamp(strptime(finishtime, "%H:%M:%S")|timestamp_local)) - as_timestamp(strptime(kickofftime, "%H:%M:%S") )) ) | float %}
+  kickofftime: {{ as_timestamp(strptime(kickofftime, "%H:%M:%S")) }}
+  finishtime : {{ as_timestamp(strptime(finishtime, "%H:%M:%S")) }}
+  Float Time Left  : {{ as_timestamp(strptime(lefttime, "%H:%M:%S") | timestamp_local) }}
+
+  {% set lefttime = (((as_timestamp(strptime(finishtime, "%H:%M:%S"))) - as_timestamp(now() )) ) | float %}
+  int Time Left    : {{ as_timestamp(strptime(lefttime, "%H:%M:%S") | timestamp_local)   | int }}
+{% endif %}
+
+{% if state_attr(states("input_select.select_cooking_timer"),"friendly_name") == None %}
+    {{ state_attr(states("input_select.select_cooking_timer"),"friendly_name") }}
+{% else %}
+    {{ state_attr(states("input_select.select_cooking_timer"),"friendly_name") }}.
+    {{ as_timestamp(state_attr(states("input_select.select_cooking_timer"),"finishes_at") )   }}.
+    {{ states("input_select.select_cooking_timer") }}
+{% endif %}
+
+================================================================================================================
+Output this:
+============
+Something about timer:
+True
+active
+timer.kitchen_004_rugbrod_bagetid
+
+timer.kitchen_004_rugbrod_bagetid
+--------
+  
+  kickofftime: 1652455364.380969
+  finishtime : 1652459231.0
+  Float Time Left  : 3866.619031
+  
+  int Time Left    : 3866
+  
+--------------------
+
+    Rugbrød bagetid ved 170°C.
+    1652459231.0.
+    timer.kitchen_004_rugbrod_bagetid
+
+================================================================================================================
+
+see more here: https://community.home-assistant.io/t/time-trigger-template-random-seconds/58851/3
+
+pnbruckner Phil:
+
+How about triggering every two seconds, and using a condition that is randomly true 33% of the time?
+
+automation:
+  - alias: Lights partying
+    trigger:
+      platform: time
+      seconds: '/2'
+    condition:
+      condition: template
+      value_template: "{{ (range(3)|random) == 0 }}"
+    action:
+      service: script.lights_partying_on
+
+In theory the action will run in 2 seconds a third of the time, in 4 seconds another third of the time, and in 6 seconds another third of the time.
+
+Mariusthvdb Marius:
+
+that’s nice! been playing with that same kind of value_template… only not as condition :wink:
+not completely sure I understand this one though: range(3) is hardly a range is it? how can it randomly select from only 3…? Or is it from 0 to 3?
+
+pnbruckner Phil:
+The default start value is 0, so range(3) is basically [0, 1, 2].
+
+

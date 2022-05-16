@@ -135,7 +135,7 @@ sleep_timer.en=1
 | Atribute        | Prev button      | Next button      | Quick button     | Time/PageName     |
 |---:             |:---:             |:---:             |:---:             |:---:              |
 | type:           | 98               | 98               | 98               | 116               |
-| id:             |                  |                  |                  |                   |         
+| id:             |                  |                  |                  |                   |
 | objname:        | b0               | b1               | b2               | t0_time           |
 | vscope:         | local            | local            | local            | global            |
 | ***sta:***      | ***corp image*** | ***corp image*** | ***corp image*** | ***solid color*** | 
@@ -144,7 +144,7 @@ sleep_timer.en=1
 | font:           | 0                | 0                | 0                | 0                 |
 | bco:            | ---------------- | ---------------- | ---------------- | 10597             |
 | pco:            | ---------------- | ---------------- | ---------------- | 65535             |
-| ***picc:***     | ***0***          | ***0***          | ***0***          | ----------------- |
+| ***picc:***     | ***0***          | ***0***          | ---------------- | ----------------- |
 | ***picc2:***    | ***1***          | ***1***          | ***1***          | ----------------- |
 | ***pco:***      | ***0***          | ***0***          | ***0***          | ----------------- |
 | ***pco2:***     | ***65535***      | ***65535***      | ***65535***      | ----------------- |
@@ -173,7 +173,7 @@ sleep_timer.en=1
 |![QuickNaviOff](./png/QuickNaviOFF.png)|![QuickNaviOff](./png/QuickNaviON.png)  |
 
 ### Visual Navigation Components on All Pages with the exception of ScreenSaver page:
-| Atribute        | Cookingtimer     | Kitchen          | Climate          | Laundry          |
+| Atribute        | CookTimer        | Kitchen          | Climate          | Laundry          |
 |---:             |:---:             |:---:             |:---:             |:---:             |
 | type:           | 98               | 98               | 98               | 98               |
 | id:             |                  |                  |                  |                  |
