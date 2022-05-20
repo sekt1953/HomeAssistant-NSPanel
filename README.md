@@ -1,4 +1,4 @@
-# Home Assistant & NSPanel
+# Home Assistant, NSPanel & Nextions Editor
 My work with Nextion Display,  ESPHome and Home Assistant, for this i use Sonoff's NSPanel EU-version
 
 ## Kilder:
