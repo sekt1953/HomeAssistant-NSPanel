@@ -20,6 +20,9 @@ My work with Nextion Display,  ESPHome and Home Assistant, for this i use Sonoff
     * [HowTo](https://github.com/masto/NSPanel-Demo-Files/wiki/HowTo)
   * Cables & Coffee
     * [lillaeriika/NSPanel](https://github.com/lillaeriika/NSPanel)
+  * ilyavolodin
+    * [ilyavolodin/NSPanel](https://github.com/ilyavolodin/NSPanel) 
+    * [Syncing slider between HA and Nextion display](https://community.home-assistant.io/t/syncing-slider-between-ha-and-nextion-display/379132/5)
 
 * Other:
   * Blakadder's
