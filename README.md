@@ -21,7 +21,7 @@ My work with Nextion Display,  ESPHome and Home Assistant, for this i use Sonoff
   * Cables & Coffee
     * [lillaeriika/NSPanel](https://github.com/lillaeriika/NSPanel)
   * ilyavolodin
-    * [ilyavolodin/NSPanel](https://github.com/ilyavolodin/NSPanel) 
+    * [ilyavolodin/NSPanel](https://github.com/ilyavolodin/NSPanel) ColorWhell and more about sync.
     * [Syncing slider between HA and Nextion display](https://community.home-assistant.io/t/syncing-slider-between-ha-and-nextion-display/379132/5)
 
 * Other:
