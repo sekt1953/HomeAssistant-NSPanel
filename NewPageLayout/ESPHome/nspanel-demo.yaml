@@ -3,14 +3,11 @@ substitutions:
   node_name: nspanel-demo
   device_name: Demo NSPanel
   default_brightness: '50'
-  #time_format: '"%H:%M:%S"'
   time_format: '"%a %d/%m %H:%M"'
-  #time_format: '"%I:%M:%p"'
   temp_format: '"%.1f°C"'
   hassio_ip: !secret Hassio_IP
   hassio_port: !secret Hassio_Port
   tft_file: ncp-0022.tft
-  #tft_file: nspanel_demo.tft
   rtttl_reboot: "twobits:d=4,o=5,b=220:c6,8g,8g,a,g,p,b,c6"
   rtttl_weather: "MissionImp:d=16,o=6,b=95:32d,32d#"
 
@@ -66,19 +63,25 @@ time:
     id: homeassistant_time
     on_time:
       - seconds: '*'
-        minutes: '*'
         then:
           - lambda: |-
               auto time_text = id(homeassistant_time).now().strftime($time_format);
               id(disp1).set_component_text("Quick.t0_time", time_text.c_str());
               id(disp1).set_component_text("CookTimer.t0_time", time_text.c_str());
+              id(disp1).set_component_text("Kitchen.t0_time", time_text.c_str());
               id(disp1).set_component_text("Climate.t0_time", time_text.c_str());
+              id(disp1).set_component_text("Laundry.t0_time", time_text.c_str());
+              id(disp1).set_component_text("FrontDoor.t0_time", time_text.c_str());
+              id(disp1).set_component_text("Livingroom.t0_time", time_text.c_str());
+              id(disp1).set_component_text("Toilet.t0_time", time_text.c_str());
+              id(disp1).set_component_text("Windows.t0_time", time_text.c_str());
+              id(disp1).set_component_text("Printer.t0_time", time_text.c_str());
+              id(disp1).set_component_text("PcScreen.t0_time", time_text.c_str());
 
-# A reboot button is always useful
 button:
-  - platform: restart
+  - platform: restart                   # A reboot button is always useful
     name: Restart $device_name
-  - platform: template
+  - platform: template                  # upload Nextion TFT file
     name: $device_name TFT Upload
     device_class: update
     on_press:
@@ -105,18 +108,19 @@ binary_sensor:
       - switch.toggle: relay_2
     on_release:
       lambda: 'id(disp1).send_command_printf("click screensaver,0");'
-  
-  - platform: nextion
+
+# Nextion Dispaly Button on CookTimer Page  
+  - platform: nextion             # select Previous timer
     name: $device_name Prev
     page_id: 1
     component_id: 4
 
-  - platform: nextion
+  - platform: nextion             # Start timer
     name: $device_name Play
     page_id: 1
     component_id: 5
     
-  - platform: nextion
+  - platform: nextion             # select Next timer   
     name: $device_name Next
     page_id: 1
     component_id: 6 
