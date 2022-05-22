@@ -322,3 +322,76 @@ The text boxes "t1_Frendly","t2_State","t3_Duration" & "t4_Finish" will all get 
 | ***y:***        | ***200***          | ***100***   | ***100***       | ***130***      | ***130***          | ***160***    | ***160***        |
 | ***w:***        | ***448***          | ***140***   | ***280***       | ***140***      | ***280***          | ***140***    | ***280***        |
 | ***h:***        | ***50***           | 30          | 30              | 30             | 30                 | 30           | 30               |
+
+
+## Page Laundry:
+### Images of laundry page:
+| Page Logo |  No Key Press ID:4  | Key Presed ID:5|
+|:---: |:---: |:---: |
+| Laundry images|  | |
+| ![Logo](./png/Logo/Laundry.png) |![LaundryOff](./png/LaundryOFF.png)|![LaundryOn](./png/LaundryON.png)  |
+
+### Button for navigate cookong timer:
+This butten will send event to NSPanel's ESP32 for Press and Release Event: 
+| Atribute        | Power On/Off |
+|---:             |:---:         |
+| type:           | 53           |
+| id:             | 12           |
+| objname:        | bt0          |
+| ***vscope:***   | ***global*** |
+| ***sta:***      | ***image***  |
+| font:           | 0            |
+| ***picc:***     | ***10***     |
+| ***picc2:***    | ***11***     |
+| ***pco:***      | ***0***      |
+| ***pco2:***     | ***65535***  |
+| xcen:           | Center       |
+| ycen:           | Center       |
+| val:            | 0            |
+| ***txt:***      |              |
+| txt_maxi:       | 10           |
+| isbr:           | False        |
+| spax:           | 0            |
+| spay:           | 0            |
+| ***x:***        | ***0***      |
+| ***y:***        | ***96***     |
+| ***w:***        | ***112***    |
+| ***h:***        | ***85***     |
+| ***Code:***     |              |
+| -Touch Press Event:|           |
+| ***--Send Component ID:*** | ***Enabled*** |
+| -Touch Release Event:|         |
+| ***--Send Component ID:*** | ***Enabled*** |
+
+
+### Text Boxes for timer data from Home Assistant:
+|  Laundry text |
+|:---: |
+|![CookTimerActive](./png/NaviOFF.png)|
+
+The text boxes "t1_Voltage","t2_Power","t3_Energy" & "t4_Temperature" will all get data from Home Assistant via ESPHome code for NSPanel:
+
+| Atribute        |t1           | t1_Voltage  | t2          | t2_Power        | t3             | t3_Energy          | t4           | t4_temperature |
+|---:             |:---:        |:---:        |:---:        |:---:            |:---:           |:---:               |:---:         |:---:             |
+| type:           | 116         | 116         | 116         | 116             | 116            | 116                | 116          | 116              |
+| id:             |             |             |             |                 |                |                    |              |                  |
+| ***objname:***  | t1          | t1_Volatge  |  ***t2***   | ***t2_Power***  | ***t3***       | ***t3_Energy***    | ***t4***     | ***t4_temperature***  |
+| ***vscope:***   | local       | ***global***| local       | ***global***    | local          | ***global***       | local        | ***global***     |
+| sta:            | solid color | solid color | solid color | solid color     | solid color    | solid color        | solid color  | solid color      |
+| style:          | flat        | flat        | flat        | flat            | flat           | flat               | flat         | flat             |
+| key:            | None        | None        | None        | None            | None           | None               | None         | None             |
+| font:           | 0                         | 0           | 0               | 0              | 0                  | 0            | 0                |
+| ***bco:***      | ***10597***               | ***10597*** | ***10597***     | ***10597***    | ***10597***        | ***10597***  | ***10597***      |
+| ***pco:***      | ***65535***               | ***65535*** | ***65535***     | ***65535***    | ***65535***        | ***65535***  | ***65535***      |
+| ***xcen:***     | Center                    | ***Right*** | ***Left***      | ***Right***    | ***Left***         | ***Right***  | ***Left***       |
+| ycen:           | Center                    | Center      | Center          | Center         | Center             | Center       | Center           |
+| pw:             | Character                 | Character   | Character       | Character      | Character          | Character    | Character        |
+| ***txt:***      | Voltage:    | ***220V***  |***Power***  | ***3000W***     |***timer duration***|***Finishes at:***|***timer finish***| 
+| ***txt_maxi:*** | 10          | 10          | 10          | 10              | 10             | 10                 | 10           | 10  |
+| isbr:           | False       | False       | False       | False           | False          | False              | False        | False            |
+| spax:           | 0           | 0           | 0           | 0               | 0              | 0                  | 0            | 0                |
+| spay:           | 0           | 0           | 0           | 0               | 0              | 0                  | 0            | 0                |
+| ***x:***        | ***0***     |       | ***0***     | ***168***       | ***0***        | ***168***          | ***0***      | ***168***        |
+| ***y:***        | ***200***   |       | ***100***   | ***100***       | ***130***      | ***130***          | ***160***    | ***160***        |
+| ***w:***        | ***448***   |       | ***140***   | ***280***       | ***140***      | ***280***          | ***140***    | ***280***        |
+| ***h:***        | ***50***    |       | 30          | 30              | 30             | 30                 | 30           | 30               |

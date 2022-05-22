@@ -33,6 +33,7 @@ My work with Nextion Display,  ESPHome and Home Assistant, for this i use Sonoff
     * [Nextion Editor](https://nextion.tech/nextion-editor/)
     * [Nextion Editor Guide](https://nextion.tech/editor_guide/)
     * [The Nextion Instruction Set](https://nextion.tech/instruction-set/)
+    * [ESPHome Nextion Display API Reference](https://esphome.io/api/nextion_8h.html)
   * Other:
     * [Nextion HMI Color Converter](https://nodtem66.github.io/nextion-hmi-color-convert/index.html)
     * [Material Design Icons](https://materialdesignicons.com/)
