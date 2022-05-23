@@ -1,7 +1,7 @@
 # Home Assistant, NSPanel & Nextions Editor
 My work with Nextion Display,  ESPHome and Home Assistant, for this i use Sonoff's NSPanel EU-version.  
 
-## These pages are created for:
+## These pages are created for these reasons:
 1. to help me remember what I was doing.
 2. to share my knowledge with you out there, who want to play with Nextion Display, Home Assistant and ESPHome.
 
@@ -151,7 +151,9 @@ This way I can change the order of my page, without having to end in the code of
 
 ### Quick Navigation:
 The next thing I chose to do was the page for quick page selection, here I chose a button size of 112 x 85 px, it gave me 12 pages to choose from, and some nice big buttons to press.  
-Here you see the Page: 
+Some thoughts about button size, if I choose 90 x 85 pixels I can have 15 pages directly accessible on the page, I know the last 2 pixels on the right side come under the cover, but I think I can live with this.  
+
+Here you see the Page with spase for 12 page: 
 | Off | On |
 |:---:|:---:|
 |![Navi Off](./NewPageLayout/png/QuickNaviOFF.png)|![Navi On](./NewPageLayout/png/QuickNaviON.png)|
@@ -165,8 +167,16 @@ The icons I have used are to be found in the [icon folder](./NewPageLayout/icon/
 The color choice I have used may be a little strange to some; but I have the [red / green color blindness](https://ojenforeningen.dk/udgivelser/farver-farveblindhed) which is quite common for Danish men, and I need a good contrast when I have to read text, therefore my choice.  
 The color choice comes from Home Assistant Dark Theme, and VSCode blue colors.
 
+<hr>
 
+## My Second Try's files: [*Click Here!* for *Explanation* and the *Files* from *NewLayout!*](./NewPageLayout/README.md)
 
-###  [*Click Here!* for *Explanation* and the *Files* from *NewLayout!*](./NewPageLayout/README.md)
+### Nextion HMI Files:
 
+### ESPHome Code:
 
+### Home Assistant:
+
+### FreCad Drawings:
+![FreeCad Drawing Images](./NewPageLayout/FreeCad/images/FreeCad-Drawing.png)
+###  [*Click Here!* for my FreCad *Files* ](./NewPageLayout/FreeCad/)
