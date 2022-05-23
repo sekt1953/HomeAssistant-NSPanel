@@ -180,20 +180,23 @@ I can start these watches from my PC or Phone; but I would like an opportunity t
 To make it all perfect, the clocks send message via Telegram to all my device when the time is up, so can I go out in the garden, visit my neighbor, and still get my rye bread out on time.
 
 Description:
-with the 3 buttons at the bottom I can navigate through my hours, when the right one is displayed in the text line above the buttons I just have to press the play button and the clock starts, the 3 lines above show the status of the clock
+with the 3 buttons at the bottom I can navigate through my clock, when the right one is displayed in the text line above the buttons I just have to press the play button and the clock starts, the 3 lines above show the status of the clock
 * idle / active
 * the time the clock is set to
 * when the time is up  
 
 End time I will probably replace by a rain piece which shows time left, but I'm not ready with that right now.
 
-The page consists of 8 text fields, 8 button .
-3 text fields that all have vscope = local
-t1, t2, t3
-and 4 text fields that all have vscope = global, these 4 fields can be written to by Home Assistant
-t0_frendly, t1_State, t2_Duration and t3_Finish
+5 text fields can be written to by Home Assistant to do that that the have to have vscope = global, these 5 fields is:  
+* t0_time
+* t0_frendly
+* t1_State
+* t2_Duration
+* t3_Finish
 
-All pages except the Screensaver page also have a text field t0_time with vscope = global, in which ESPHome can write the time.
+The 3 Button for Clock Navigation has to have there Touch Release Event: Send Component ID enabled!!!! for Home Assistant to get the information.
+
+For more detail atribute settings [goto here:](./NewPageLayout/README.md).
 
 <hr>
 
