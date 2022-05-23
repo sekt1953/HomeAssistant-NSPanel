@@ -70,7 +70,7 @@ here is the code stump:
 ```
 lcd_dev fffb 0002 0000 0020 
 ```
-The code is inserted in the Nextions Editorens Program.s see more [here: ](./NewPageLayout#programs---is-run-one-time-at-boot)
+The code is inserted in the [Nextions Editorens Program.s see more Here: ](./NewPageLayout#programs---is-run-one-time-at-boot)
 
 ### Fonts:
 I was looking at how large fonts I would use for my texts, due to my vision, I would like them to be as large as possible so the longest text I knew I would need formed the background for my font size selection, so I ended up choosing 2 font sizes:  
