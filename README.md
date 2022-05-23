@@ -169,6 +169,38 @@ The color choice comes from Home Assistant Dark Theme, and VSCode blue colors.
 
 <hr>
 
+## Page CookTimer:
+| Off | On | Running |
+|:---:|:---:|:---:|
+|![Navi Off](./NewPageLayout/png/CookingOFF.png)|![Navi On](./NewPageLayout/png/CookingON.png)|![Running](./NewPageLayout/png/CookTimerActive.png )|
+
+Background:
+I bake all my bread myself, often I have several things going on at the same time something is in the oven, something needs to have, eggs need to be boiled, all these things need a clock so it comes out of the oven on time, raises the right time , and the soft-boiled eggs do not turn into green hard-boiled eggs, which is why I have in Home Assistant created a bunch of hours with preset times.  
+I can start these watches from my PC or Phone; but I would like an opportunity to start them from the kitchen without having to find my phone, therefore this panel and this page.   
+To make it all perfect, the clocks send message via Telegram to all my device when the time is up, so can I go out in the garden, visit my neighbor, and still get my rye bread out on time.
+
+Description:
+with the 3 buttons at the bottom I can navigate through my hours, when the right one is displayed in the text line above the buttons I just have to press the play button and the clock starts, the 3 lines above show the status of the clock
+* idle / active
+* the time the clock is set to
+* when the time is up  
+
+End time I will probably replace by a rain piece which shows time left, but I'm not ready with that right now.
+
+The page consists of 8 text fields, 8 button .
+3 text fields that all have vscope = local
+t1, t2, t3
+and 4 text fields that all have vscope = global, these 4 fields can be written to by Home Assistant
+t0_frendly, t1_State, t2_Duration and t3_Finish
+
+All pages except the Screensaver page also have a text field t0_time with vscope = global, in which ESPHome can write the time.
+
+<hr>
+
+### More page to come !!!
+
+<hr>
+
 ## My Second Try's files: [*Click Here!* for *Explanation* and the *Files* from *NewLayout!*](./NewPageLayout/README.md)
 
 ### Nextion HMI Files:
