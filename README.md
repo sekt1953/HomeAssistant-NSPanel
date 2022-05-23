@@ -64,6 +64,14 @@ In my Home Assistant I have created timer to used when I am cooking and baking, 
 
 In my second attempt, I will try to have a more organized approach to the appearance of my NSPanel. 
 
+### Problem with Sonoff NSPanel EU-version.
+The problem with the EU version is that the size is limited to 86 x 86 mm in height and width, and to have a symmetrical look you have to cover the last 32 pixels, another thing is that you have obviously waited the display upside down so to use it with the 2 push buttons below the display you have to choose an orientation of 270 degrees, the two things together mean that the buttons that define in the display are not pressure sensitive in the same place as they are shown, this can be solved by running a single line code when starting the display
+here is the code stump:
+```
+lcd_dev fffb 0002 0000 0020 
+```
+The code is inserted in the Nextions Editorens Program.s see more [here: ](./NewPageLayout#programs---is-run-one-time-at-boot)
+
 ### Fonts:
 I was looking at how large fonts I would use for my texts, due to my vision, I would like them to be as large as possible so the longest text I knew I would need formed the background for my font size selection, so I ended up choosing 2 font sizes:  
 
@@ -74,6 +82,10 @@ To limit the fonts memory consumption I chose to limit the number of characters 
  * "'<>|!%()+=,-_.:€°/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ abcdefghijklmnopqrstuvwxyzæøå
   
 See more about glyphs here: [ESPHome - Fonts](https://esphome.io/components/display/index.html?highlight=font#fonts).
+
+[*Click Here!* for *Explanation* about my font settings*](https://github.com/sekt1953/HomeAssistant-NSPanel/tree/main/NewPageLayout#font)
+
+<hr>
 
 ### Buttons:
 I also looked at how big keys I can use, the EU version of NSPanel has 448 usable pixels horizontally and 320px vertically. standard keys in the nextion editor are 100px wide and 50px high, so if I had to use it as a guide for the size of my buttons I would be able to place 4 buttons horizontally and have 48px left, so instead selected characters a button width of 112px, 4 x 112 is 448 pixels.  
@@ -163,9 +175,13 @@ The blank field at the top is for the navigation buttons!
 I have used Gimp to make my pages in and I have used Material Design Icons for my icons, I used to download the icons as png files in the size 48 x 48 pixels, this size fits well everywhere.
 The icons I have used are to be found in the [icon folder](./NewPageLayout/icon/), my files Gimp files can be found in the [xcf folder](./NewPageLayout/xcf/), and the png files can be found in the [png folder](./NewPageLayout/png/).
 
+<hr>
+
 ### Color I Use:
 The color choice I have used may be a little strange to some; but I have the [red / green color blindness](https://ojenforeningen.dk/udgivelser/farver-farveblindhed) which is quite common for Danish men, and I need a good contrast when I have to read text, therefore my choice.  
-The color choice comes from Home Assistant Dark Theme, and VSCode blue colors.
+The color choice comes from Home Assistant Dark Theme, and VSCode blue colors.  
+
+[*Click Here!* to see my Color Settings and*](https://github.com/sekt1953/HomeAssistant-NSPanel/tree/main/NewPageLayout#nextion-color)
 
 <hr>
 
@@ -198,6 +214,8 @@ The 3 Button for Clock Navigation has to have there Touch Release Event: Send Co
 
 For more detail atribute settings [goto here:](./NewPageLayout/README.md#page-cooktimer).
 
+<hr>
+
 ## Page Laundry:
 
 
@@ -217,4 +235,4 @@ For more detail atribute settings [goto here:](./NewPageLayout/README.md#page-co
 
 ### FreCad Drawings:
 ![FreeCad Drawing Images](./NewPageLayout/FreeCad/images/FreeCad-Drawing.png)
-###  [*Click Here!* for my FreCad *Files* ](./NewPageLayout/FreeCad/)
+###  [*Click Here!* for my FreeCad *Files* ](./NewPageLayout/FreeCad/)
