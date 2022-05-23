@@ -41,7 +41,7 @@ My work with Nextion Display,  ESPHome and Home Assistant, for this i use Sonoff
     * [Display Component](https://esphome.io/components/display/index.html)
     * [Nextion TFT LCD Display](https://esphome.io/components/display/nextion.html)
 
-## First Try:
+## My First Try:
 ![First screeen](/First_Try/Nextion/Image/FirstTry.png)  
 
 First try is all about getting data all the way from Home Assistant via ESPHome to NSPanel, and button to send signal all the way back from NSPanel via ESPHome to Home Assistant.
@@ -51,7 +51,7 @@ In my Home Assistant I have created timer to used when I am cooking and baking, 
 ###  [*Click Here!* for *Explanation* and the *Files* from *First try!*](./First_Try/README.md)
  
 
-## New Page Layout:
+## My Second Try:
 | | |
 |:---:|:---:|
 |![QuickGuide](./NewPageLayout/png/QuickPage.png)|![TimerPage](./NewPageLayout/png/TimerPage.png)|
