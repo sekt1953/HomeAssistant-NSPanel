@@ -198,6 +198,9 @@ The 3 Button for Clock Navigation has to have there Touch Release Event: Send Co
 
 For more detail atribute settings [goto here:](./NewPageLayout/README.md#page-cooktimer).
 
+## Page Laundry:
+
+
 <hr>
 
 ### More page to come !!!
