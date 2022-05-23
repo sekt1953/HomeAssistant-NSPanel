@@ -196,7 +196,7 @@ End time I will probably replace by a rain piece which shows time left, but I'm 
 
 The 3 Button for Clock Navigation has to have there Touch Release Event: Send Component ID enabled!!!! for Home Assistant to get the information.
 
-For more detail atribute settings [goto here:](./NewPageLayout/README.md).
+For more detail atribute settings [goto here:](./NewPageLayout/README.md#page-cooktimer).
 
 <hr>
 
