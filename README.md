@@ -50,8 +50,9 @@ I hope you will find something you can use, and you are all welcome to make sugg
     * [Nextion TFT LCD Display](https://esphome.io/components/display/nextion.html)
 
 * 3D Print
-  * [Bed levelling for beginners to achieve a perfect first layer](https://www.youtube.com/watch?v=Ze36SX1xzOE)
-  * [First layer tab of calibration website](https://teachingtechyt.github.io/calibration.html#firstlayer)
+  * [Teaching Tech](https://www.youtube.com/c/TeachingTech)
+    * [Bed levelling for beginners to achieve a perfect first layer](https://www.youtube.com/watch?v=Ze36SX1xzOE)
+    * [First layer tab of calibration website](https://teachingtechyt.github.io/calibration.html#firstlayer)
 
 ## My First Try:
 ![First screeen](/First_Try/Nextion/Image/FirstTry.png)  
